@@ -1,3 +1,4 @@
+// 把配置文件加载到结构体里
 package config
 
 import (
