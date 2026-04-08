@@ -1,0 +1,25 @@
+# 编译生成的二进制文件
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# 依赖包文件夹
+vendor/
+
+# 个人配置文件（包含 API Key）
+config.yaml
+.env
+
+# IDE 产生的文件
+.idea/
+.vscode/
+
+# 日志文件
+*.log
+
+# 前端依赖
+node_modules/
+dist/
