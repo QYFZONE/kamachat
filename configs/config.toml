@@ -1,0 +1,37 @@
+[mainConfig]
+appName = "Y7f_chat"
+host = "127.0.0.1"
+port = 8080
+
+[mysqlConfig]
+host = "127.0.0.1"
+port = 3306
+user = "chat_user"
+password = "123456"
+databaseName = "chat_db"
+
+[redisConfig]
+host = "127.0.0.1"
+port = 6379
+password = "123456"
+db = 0
+
+[authCodeConfig]
+accessKeyID = ""
+accessKeySecret = ""
+signName = ""
+templateCode = ""
+
+[logConfig]
+logPath = "./logs"
+
+[kafkaConfig]
+messageMode = "channel"# 消息模式 channel or kafka
+hostPort = "127.0.0.1:9092" # "127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094" 多个kafka服务器
+chatTopic = "chat_message"
+partition = 0 # kafka partition
+timeout = 1 # 单位秒
+
+[staticSrcConfig]
+staticAvatarPath = "./static/avatars"
+staticFilePath = "./static/files"
