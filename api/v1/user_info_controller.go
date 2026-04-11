@@ -3,12 +3,13 @@ package v1
 import (
 	"fmt"
 	_ "fmt"
-	"github.com/gin-gonic/gin"
 	"kama_chat_server/internal/dto/request"
 	"kama_chat_server/internal/service/gorm"
 	"kama_chat_server/pkg/constants"
 	"kama_chat_server/pkg/zlog"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // Register 注册
@@ -42,10 +43,21 @@ func Login(c *gin.Context) {
 	JsonBack(c, message, ret, userInfo)
 }
 
-func SmsLogin(context *gin.Context) {
+func SmsLogin(c *gin.Context) {
+	var req request.SmsLoginRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
 
+	message, userInfo, ret := gorm.UserInfoService.SmsLogin(req)
+	JsonBack(c, message, ret, userInfo)
 }
 
-func EmaiLogin(context *gin.Context) {
+func EmaiLogin(c *gin.Context) {
 
 }
