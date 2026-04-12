@@ -1,11 +1,12 @@
 package https_server
 
 import (
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	v1 "kama_chat_server/api/v1"
 	"kama_chat_server/internal/config"
 	"kama_chat_server/pkg/ssl"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 var GE *gin.Engine
@@ -21,6 +22,7 @@ func init() {
 
 	// 3. 路由分组注册
 	setupPublicRoutes() // 公开接口（登录注册）
+	setupUserRoutes()   // 用户模块
 }
 
 // setupGlobalMiddleware 全局中间件
@@ -54,5 +56,19 @@ func setupPublicRoutes() {
 		auth.POST("/login", v1.Login)           // 账号密码登录
 		auth.POST("/sms/login", v1.SmsLogin)    // 短信登录
 		auth.POST("/email/login", v1.EmaiLogin) //邮箱登录
+	}
+}
+
+func setupUserRoutes() {
+	user := GE.Group("/user")
+	{
+		user.POST("/getUserInfo", v1.GetUserInfo)         // 获取用户信息
+		user.POST("/getUserInfoList", v1.GetUserInfoList) // 获取用户列表
+		user.POST("/updateUserInfo", v1.UpdateUserInfo)   //更新用户信息
+		user.POST("/ableUsers", v1.AbleUsers)             // 启用用户
+		user.POST("/disableUsers", v1.DisableUsers)       // 禁用用户
+		user.POST("/deleteUsers", v1.DeleteUsers)         // 删除用户
+		user.POST("/setAdmin", v1.SetAdmin)               // 设置管理员
+		user.POST("/wsLogout", v1.WsLogout)               // WS 登出
 	}
 }

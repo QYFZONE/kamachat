@@ -63,3 +63,11 @@ func SetKeyEx(key string, code string, timeout time.Duration) error {
 	}
 	return nil
 }
+
+func GetKeyNilIsErr(key string) (string, error) {
+	value, err := redisClient.Get(ctx, key).Result()
+	if err != nil {
+		return "", err
+	}
+	return value, nil
+}

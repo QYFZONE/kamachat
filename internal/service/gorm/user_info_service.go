@@ -1,6 +1,7 @@
 package gorm
 
 import (
+	"encoding/json"
 	"errors"
 	"kama_chat_server/internal/dao"
 	"kama_chat_server/internal/dto/request"
@@ -15,6 +16,7 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/go-redis/redis/v8"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
@@ -175,18 +177,18 @@ func (u *userInfoService) Register(registerReq request.RegisterRequest) (string,
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(registerReq.Password), bcrypt.DefaultCost)
 	// 新用户信息
 	newUser := model.UserInfo{
-		Uuid : "U" + random.GetNowAndLenRandomString(11),
-		Telephone : registerReq.Telephone,
-		Password : string(hashedPassword),
-		Nickname : registerReq.Nickname,
-		Avatar : "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-		CreatedAt : time.Now(),
-		Status : user_status_enum.NORMAL,
+		Uuid:      "U" + random.GetNowAndLenRandomString(11),
+		Telephone: registerReq.Telephone,
+		Password:  string(hashedPassword),
+		Nickname:  registerReq.Nickname,
+		Avatar:    "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		CreatedAt: time.Now(),
+		Status:    user_status_enum.NORMAL,
 	}
 
 	newUser.IsAdmin = u.checkUserIsAdminOrNot(newUser)
 	err = dao.User.CreatNewUser(&newUser)
-	if err != nil{
+	if err != nil {
 		zlog.Error(err.Error())
 		return constants.SYSTEM_ERROR, nil, -1
 	}
@@ -202,7 +204,125 @@ func (u *userInfoService) Register(registerReq request.RegisterRequest) (string,
 		Signature: newUser.Signature,
 		IsAdmin:   newUser.IsAdmin,
 		Status:    newUser.Status,
-		CreatedAt : newUser.CreatedAt.Format("2006.01.02"),
+		CreatedAt: newUser.CreatedAt.Format("2006.01.02"),
 	}
 	return "注册成功", registerRsp, 0
+}
+
+// GetUserInfo 获取用户信息
+func (u *userInfoService) GetUserInfo(uuid string) (string, *respond.GetUserInfoRespond, int) {
+	// redis
+	zlog.Info(uuid)
+	cacheKey := "user_info_" + uuid
+	repString, err := myredis.GetKey(cacheKey)
+
+	if err == nil {
+		//在redis命中 解析
+		var rep respond.GetUserInfoRespond
+		if err = json.Unmarshal([]byte(repString), &rep); err == nil {
+			zlog.Error("缓存数据解析失败: " + err.Error())
+			// 解析失败，继续查数据库（视为缓存未命中）
+		} else {
+			return "获取用户信息成功", &rep, 0
+		}
+	}
+
+	if !errors.Is(err, redis.Nil) {
+		// 非 Nil 错误（连接失败等）
+		zlog.Error("Redis 查询异常: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	// 3. 缓存未命中，查数据库
+	user, err := dao.User.GetUserInfoByUuid(uuid)
+	if err != nil {
+		zlog.Error("数据库查询失败: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+	// 5. 构造响应
+	rsp := respond.GetUserInfoRespond{
+		Uuid:      user.Uuid,
+		Telephone: user.Telephone,
+		Nickname:  user.Nickname,
+		Avatar:    user.Avatar,
+		Birthday:  user.Birthday,
+		Email:     user.Email,
+		Gender:    user.Gender,
+		Signature: user.Signature,
+		CreatedAt: user.CreatedAt.Format("2006-01-02 15:04:05"),
+		IsAdmin:   user.IsAdmin,
+		Status:    user.Status,
+	}
+	jsonData, err := json.Marshal(rsp)
+	if err != nil {
+		zlog.Error("JSON 序列化失败: " + err.Error())
+	} else {
+		if err := myredis.SetKeyEx(cacheKey, string(jsonData), 10*time.Minute); err != nil {
+			zlog.Error("Redis 回填失败: " + err.Error())
+			// 不影响主流程，仅记录日志
+		}
+	}
+
+	return "获取用户信息成功", &rsp, 0
+}
+
+// GetUserInfoList 获取用户列表除了ownerId之外 - 管理员
+// 管理员少，而且如果用户更改了，那么管理员会一直频繁删除redis，更新redis，比较麻烦，所以管理员暂时不使用redis缓存
+func (u *userInfoService) GetUserInfoList(ownerId string) (string, []respond.GetUserListRespond, int) {
+	users, err := dao.User.GetUsersExcept(ownerId)
+	if err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+	rsp := make([]respond.GetUserListRespond, 0, len(users))
+	for _, user := range users {
+		rsp = append(rsp, respond.GetUserListRespond{
+			Uuid:      user.Uuid,
+			Telephone: user.Telephone,
+			Nickname:  user.Nickname,
+			Status:    user.Status,
+			IsAdmin:   user.IsAdmin,
+			IsDeleted: user.DeletedAt.Valid,
+		})
+	}
+
+	return "获取用户列表成功", rsp, 0
+}
+
+// UpdateUserInfo 修改用户信息
+func (u *userInfoService) UpdateUserInfo(updateReq request.UpdateUserInfoRequest) (string, int) {
+	user, err := dao.User.GetUserInfoByUuid(updateReq.Uuid)
+	if err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	//更新
+	if updateReq.Email != "" {
+		user.Email = updateReq.Email
+	}
+	if updateReq.Nickname != "" {
+		user.Nickname = updateReq.Nickname
+	}
+	if updateReq.Birthday != "" {
+		user.Birthday = updateReq.Birthday
+	}
+	if updateReq.Signature != "" {
+		user.Signature = updateReq.Signature
+	}
+	if updateReq.Avatar != "" {
+		user.Avatar = updateReq.Avatar
+	}
+
+	if err := dao.User.SaveUser(user); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	cacheKey := "user_info_" + updateReq.Uuid
+	if err := myredis.DelKeyIfExists(cacheKey); err != nil {
+		zlog.Error("删除缓存失败: " + err.Error())
+		// 不影响主流程，但会导致缓存短暂不一致
+	}
+
+	return "修改用户信息成功", 0
 }
