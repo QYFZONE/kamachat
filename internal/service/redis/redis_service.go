@@ -3,8 +3,10 @@ package redis
 import (
 	"context"
 	"errors"
+	"fmt"
 	"kama_chat_server/internal/config"
 	"kama_chat_server/pkg/zlog"
+	"log"
 	"strconv"
 	"time"
 
@@ -41,19 +43,8 @@ func GetKey(key string) (string, error) {
 	return val, err
 }
 
-func DelKeyIfExists(key string) error {
-	exists, err := redisClient.Exists(ctx, key).Result()
-	if err != nil {
-		return err
-	}
-	if exists == 1 { // 键存在
-		delErr := redisClient.Del(ctx, key).Err()
-		if delErr != nil {
-			return delErr
-		}
-	}
-	// 无论键是否存在，都不返回错误
-	return nil
+func DelKey(key string) error {
+	return redisClient.Del(ctx, key).Err()
 }
 
 func SetKeyEx(key string, code string, timeout time.Duration) error {
@@ -70,4 +61,35 @@ func GetKeyNilIsErr(key string) (string, error) {
 		return "", err
 	}
 	return value, nil
+}
+
+func DelKeysWithPattern(pattern string) error {
+	var cursor uint64 = 0
+	var batchSize int64 = 100 // 每批扫描数量，控制单次处理量
+
+	for {
+		// 使用 SCAN 替代 KEYS，非阻塞、游标迭代
+		keys, nextCursor, err := redisClient.Scan(ctx, cursor, pattern, batchSize).Result()
+		if err != nil {
+			return fmt.Errorf("scan keys failed: %w", err)
+		}
+
+		// 批量删除本批次
+		if len(keys) > 0 {
+			if err := redisClient.Del(ctx, keys...).Err(); err != nil {
+				// 部分删除失败也继续，记录日志
+				log.Printf("delete keys partial failed: %v, keys: %v", err, keys)
+			} else {
+				log.Printf("deleted %d keys with pattern %s", len(keys), pattern)
+			}
+		}
+
+		cursor = nextCursor
+		// 游标归零表示遍历完成
+		if cursor == 0 {
+			break
+		}
+	}
+
+	return nil
 }

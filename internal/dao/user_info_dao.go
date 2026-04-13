@@ -1,12 +1,6 @@
 package dao
 
-import (
-	"kama_chat_server/internal/model"
-
-	"gorm.io/gorm"
-)
-
-var GormDB *gorm.DB
+import "kama_chat_server/internal/model"
 
 type userInfoDao struct{}
 
@@ -41,6 +35,6 @@ func (d *userInfoDao) SaveUser(user *model.UserInfo) error {
 }
 
 // 向表中插入一条新信息
-func (d *userInfoDao) CreatNewUser(newUser *model.UserInfo) error {
+func (d *userInfoDao) CreateNewUser(newUser *model.UserInfo) error {
 	return GormDB.Create(newUser).Error
 }

@@ -111,7 +111,7 @@ func (u *userInfoService) SmsLogin(req request.SmsLoginRequest) (string, *respon
 		zlog.Error(message)
 		return message, nil, -2
 	} else {
-		if err := myredis.DelKeyIfExists(key); err != nil {
+		if err := myredis.DelKey(key); err != nil {
 			zlog.Error(err.Error())
 			return constants.SYSTEM_ERROR, nil, -1
 		}
@@ -162,7 +162,7 @@ func (u *userInfoService) Register(registerReq request.RegisterRequest) (string,
 		zlog.Error(message)
 		return message, nil, -2
 	} else {
-		if err := myredis.DelKeyIfExists(key); err != nil {
+		if err := myredis.DelKey(key); err != nil {
 			zlog.Error(err.Error())
 			return constants.SYSTEM_ERROR, nil, -1
 		}
@@ -187,7 +187,7 @@ func (u *userInfoService) Register(registerReq request.RegisterRequest) (string,
 	}
 
 	newUser.IsAdmin = u.checkUserIsAdminOrNot(newUser)
-	err = dao.User.CreatNewUser(&newUser)
+	err = dao.User.CreateNewUser(&newUser)
 	if err != nil {
 		zlog.Error(err.Error())
 		return constants.SYSTEM_ERROR, nil, -1
@@ -214,20 +214,18 @@ func (u *userInfoService) GetUserInfo(uuid string) (string, *respond.GetUserInfo
 	// redis
 	zlog.Info(uuid)
 	cacheKey := "user_info_" + uuid
-	repString, err := myredis.GetKey(cacheKey)
+	repString, err := myredis.GetKeyNilIsErr(cacheKey)
 
 	if err == nil {
 		//在redis命中 解析
 		var rep respond.GetUserInfoRespond
-		if err = json.Unmarshal([]byte(repString), &rep); err == nil {
+		if err := json.Unmarshal([]byte(repString), &rep); err != nil {
 			zlog.Error("缓存数据解析失败: " + err.Error())
 			// 解析失败，继续查数据库（视为缓存未命中）
 		} else {
 			return "获取用户信息成功", &rep, 0
 		}
-	}
-
-	if !errors.Is(err, redis.Nil) {
+	} else if !errors.Is(err, redis.Nil) {
 		// 非 Nil 错误（连接失败等）
 		zlog.Error("Redis 查询异常: " + err.Error())
 		return constants.SYSTEM_ERROR, nil, -1
@@ -319,7 +317,7 @@ func (u *userInfoService) UpdateUserInfo(updateReq request.UpdateUserInfoRequest
 	}
 
 	cacheKey := "user_info_" + updateReq.Uuid
-	if err := myredis.DelKeyIfExists(cacheKey); err != nil {
+	if err := myredis.DelKey(cacheKey); err != nil {
 		zlog.Error("删除缓存失败: " + err.Error())
 		// 不影响主流程，但会导致缓存短暂不一致
 	}
