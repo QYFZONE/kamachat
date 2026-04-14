@@ -1,9 +1,10 @@
 package dao
 
 import (
-	"gorm.io/gorm"
 	"kama_chat_server/internal/model"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type sessionDao struct{}
@@ -22,5 +23,19 @@ func (d *sessionDao) SoftDeleteGroupSession(userId, groupId string, deletedTime 
 
 	return GormDB.Model(&model.Session{}).
 		Where("send_id = ? AND receive_id = ?", userId, groupId).
+		Update("deleted_at", deletedAt).Error
+}
+
+// SoftDeleteGroupSessionsByGroupId 软删除群聊对应的所有会话
+// groupId: 群聊 id
+// deletedTime: 删除时间
+func (d *sessionDao) SoftDeleteGroupSessionsByGroupId(groupId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.Session{}).
+		Where("receive_id = ?", groupId).
 		Update("deleted_at", deletedAt).Error
 }

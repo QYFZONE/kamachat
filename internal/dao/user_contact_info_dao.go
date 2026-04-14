@@ -34,3 +34,17 @@ func (d *contactInfoDao) QuitGroupByUserIdAndGroupId(userId, groupId string, del
 			"status":     contact_status_enum.QUIT_GROUP,
 		}).Error
 }
+
+// SoftDeleteGroupContactsByGroupId 软删除群聊对应的所有联系人关系
+// groupId: 群聊 id
+// deletedTime: 删除时间
+func (d *contactInfoDao) SoftDeleteGroupContactsByGroupId(groupId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.UserContact{}).
+		Where("contact_id = ?", groupId).
+		Update("deleted_at", deletedAt).Error
+}

@@ -69,7 +69,7 @@ func (g *groupInfoService) CreateGroup(groupReq request.CreateGroupRequest) (str
 		UpdateAt:    now,
 	}
 
-	if err := myredis.DelKey("group:load_myGroup:" + groupReq.OwnerId); err != nil {
+	if err := myredis.DelKey("user:group_created_list:" + groupReq.OwnerId); err != nil {
 		zlog.Error("delete my group list cache failed: " + err.Error())
 	}
 
@@ -87,7 +87,7 @@ func (g *groupInfoService) CreateGroup(groupReq request.CreateGroupRequest) (str
 
 // LoadMyGroup 获取我创建的群聊
 func (g *groupInfoService) LoadMyGroup(ownerId string) (string, []respond.LoadMyGroupRespond, int) {
-	cacheKey := "group:load_myGrop" + ownerId
+	cacheKey := "user:group_created_list:" + ownerId
 
 	//先查缓存
 	repString, err := myredis.GetKey(cacheKey)
@@ -318,4 +318,166 @@ func (g *groupInfoService) LeaveGroup(userId, groupId string) (string, int) {
 	//}
 
 	return "退群成功", 0
+}
+
+// DismissGroup 解散群聊
+func (g *groupInfoService) DismissGroup(ownerId, groupId string) (string, int) {
+	group, err := dao.Group.GetGroupInfoByGroupId(groupId)
+	if err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	if group.OwnerId == ownerId {
+		return "无权限解散群聊", -2
+	}
+
+	now := time.Now()
+	// 软删除群信息
+	if err := dao.Group.SoftDeleteGroupByGroupId(groupId, now); err != nil {
+		zlog.Error("soft delete group failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 软删除群相关会话
+	if err := dao.Session.SoftDeleteGroupSessionsByGroupId(groupId, now); err != nil {
+		zlog.Error("soft delete group sessions failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 软删除群相关联系人关系
+	if err := dao.Contact.SoftDeleteGroupContactsByGroupId(groupId, now); err != nil {
+		zlog.Error("soft delete group contacts failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 软删除群相关申请记录
+	if err := dao.ContactApply.SoftDeleteGroupAppliesByGroupId(groupId, now); err != nil {
+		zlog.Error("soft delete group applies failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 删除相关缓存
+	// 我创建的群列表缓存
+	if err := myredis.DelKey("user:group_created_list:" + ownerId); err != nil {
+		zlog.Error("delete user group created list cache failed: " + err.Error())
+	}
+
+	// 群信息缓存
+	if err := myredis.DelKey("group:info:" + groupId); err != nil {
+		zlog.Error("delete group info cache failed: " + err.Error())
+	}
+
+	// 群成员列表缓存
+	if err := myredis.DelKey("group:member_list:" + groupId); err != nil {
+		zlog.Error("delete group member list cache failed: " + err.Error())
+	}
+
+	// 所有用户的“我加入的群列表”都可能受影响
+	// 当前先按前缀删，后续如果有成员列表可以精确删除对应用户缓存
+	if err := myredis.DelKeysWithPrefix("user:group_joined_list:"); err != nil {
+		zlog.Error("delete user group joined list cache failed: " + err.Error())
+	}
+	return "解散群聊成功", 0
+}
+
+// GetGroupInfo查询群聊信息
+func (g *groupInfoService) GetGroupInfo(groupId string) (string, *respond.GetGroupInfoRespond, int) {
+	repString, err := myredis.GetKeyNilIsErr("group:info:" + groupId)
+	if err == nil {
+		var rep respond.GetGroupInfoRespond
+		err = json.Unmarshal([]byte(repString), &rep)
+		if err != nil {
+			zlog.Error(err.Error())
+		} else {
+			return "获取成功", &rep, 0
+		}
+	} else if !errors.Is(err, redis.Nil) {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	group, err := dao.Group.GetGroupInfoByGroupId(groupId)
+	if err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	rep := &respond.GetGroupInfoRespond{
+		Uuid:      group.Uuid,
+		Name:      group.Name,
+		Notice:    group.Notice,
+		Avatar:    group.Avatar,
+		MemberCnt: group.MemberCnt,
+		OwnerId:   group.OwnerId,
+		AddMode:   group.AddMode,
+		Status:    group.Status,
+		IsDeleted: group.DeletedAt.Valid,
+	}
+	jsonData, err := json.Marshal(rep)
+	if err != nil {
+		zlog.Error("marshal group info failed: " + err.Error())
+	} else {
+		if err := myredis.SetKeyEx("group:info:"+groupId, string(jsonData), 10*time.Minute); err != nil {
+			zlog.Error("set group info cache failed: " + err.Error())
+		}
+	}
+	return "获取成功", rep, 0
+}
+
+// GetGroupMemberList 获取群聊成员列表
+func (g *groupInfoService) GetGroupMemberList(groupId string) (string, []respond.GetGroupMemberListRespond, int) {
+	cacheKey := "group:member_list:" + groupId
+
+	// 先查缓存
+	repString, err := myredis.GetKeyNilIsErr(cacheKey)
+	if err == nil {
+		var repMemberList []respond.GetGroupMemberListRespond
+		if unmarshalErr := json.Unmarshal([]byte(repString), &repMemberList); unmarshalErr != nil {
+			zlog.Error("unmarshal group member list cache failed: " + unmarshalErr.Error())
+			// 缓存解析失败，继续查数据库
+		} else {
+			return "获取群聊成员列表成功", repMemberList, 0
+		}
+	} else if !errors.Is(err, redis.Nil) {
+		zlog.Error("get group member list cache failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	// 查群信息
+	group, err := dao.Group.GetGroupInfoByGroupId(groupId)
+	if err != nil {
+		zlog.Error("get group info failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	// 解析成员 id 列表
+	var memberIds []string
+	if err := json.Unmarshal(group.Members, &memberIds); err != nil {
+		zlog.Error("unmarshal group members failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	// 查询成员信息并组装返回
+	repMemberList := make([]respond.GetGroupMemberListRespond, 0, len(memberIds))
+	for _, memberId := range memberIds {
+		userInfo, err := dao.User.GetUserInfoByUuid(memberId)
+		if err != nil {
+			zlog.Error("get user info failed: " + err.Error())
+			return constants.SYSTEM_ERROR, nil, -1
+		}
+
+		repMemberList = append(repMemberList, respond.GetGroupMemberListRespond{
+			UserId:   userInfo.Uuid,
+			Nickname: userInfo.Nickname,
+			Avatar:   userInfo.Avatar,
+		})
+	}
+
+	// 回填缓存
+	jsonData, err := json.Marshal(repMemberList)
+	if err != nil {
+		zlog.Error("marshal group member list failed: " + err.Error())
+	} else {
+		if err := myredis.SetKeyEx(cacheKey, string(jsonData), 10*time.Minute); err != nil {
+			zlog.Error("set group member list cache failed: " + err.Error())
+		}
+	}
+
+	return "获取群聊成员列表成功", repMemberList, 0
 }

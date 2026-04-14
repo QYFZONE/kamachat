@@ -87,11 +87,61 @@ func LeaveGroup(c *gin.Context) {
 
 // DismissGroup 解散群聊
 func DismissGroup(c *gin.Context) {
-
+	var req request.DismissGroupRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
+	message, ret := gorm.GroupInfoService.DismissGroup(req.OwnerId, req.GroupId)
+	JsonBack(c, message, ret, nil)
 }
 
 // GetGroupInfo 获取群聊详情
 func GetGroupInfo(c *gin.Context) {
+	var req request.GetGroupInfoRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
+	message, groupInfo, ret := gorm.GroupInfoService.GetGroupInfo(req.GroupId)
+	JsonBack(c, message, ret, groupInfo)
+}
+
+// GetGroupMemberList 获取群聊成员列表
+func GetGroupMemberList(c *gin.Context) {
+	var req request.GetGroupMemberListRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
+	message, groupMemberList, ret := gorm.GroupInfoService.GetGroupMemberList(req.GroupId)
+	JsonBack(c, message, ret, groupMemberList)
+}
+
+// UpdateGroupInfo 更新群聊消息
+func UpdateGroupInfo(c *gin.Context) {
+
+}
+
+// RemoveGroupMembers 批量移除群成员（踢人）
+func RemoveGroupMembers(c *gin.Context) {
+
+}
+
+// SetGroupsStatus 设置群聊是否启用
+func SetGroupsStatus(c *gin.Context) {
 
 }
 
@@ -102,25 +152,5 @@ func GetGroupInfoList(c *gin.Context) {
 
 // DeleteGroups 删除列表中群聊 - 管理员
 func DeleteGroups(c *gin.Context) {
-
-}
-
-// SetGroupsStatus 设置群聊是否启用
-func SetGroupsStatus(c *gin.Context) {
-
-}
-
-// UpdateGroupInfo 更新群聊消息
-func UpdateGroupInfo(c *gin.Context) {
-
-}
-
-// GetGroupMemberList 获取群聊成员列表
-func GetGroupMemberList(c *gin.Context) {
-
-}
-
-// GetGroupMemberList 获取群聊成员列表
-func RemoveGroupMembers(c *gin.Context) {
 
 }

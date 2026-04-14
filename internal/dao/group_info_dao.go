@@ -1,6 +1,11 @@
 package dao
 
-import "kama_chat_server/internal/model"
+import (
+	"kama_chat_server/internal/model"
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type groupInfoDao struct{}
 
@@ -25,6 +30,24 @@ func (d *groupInfoDao) GetGroupInfoByGroupId(groupId string) (*model.GroupInfo, 
 	return &groupInfo, err
 }
 
+// 保存更新后的group信息
 func (d *groupInfoDao) SaveGroup(group *model.GroupInfo) error {
 	return GormDB.Save(group).Error
+}
+
+// SoftDeleteGroupByGroupId 软删除指定群聊
+// groupId: 群聊 id
+// deletedTime: 删除时间
+func (d *groupInfoDao) SoftDeleteGroupByGroupId(groupId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.GroupInfo{}).
+		Where("uuid = ?", groupId).
+		Updates(map[string]interface{}{
+			"deleted_at": deletedAt,
+			"updated_at": deletedTime,
+		}).Error
 }
