@@ -481,3 +481,152 @@ func (g *groupInfoService) GetGroupMemberList(groupId string) (string, []respond
 
 	return "获取群聊成员列表成功", repMemberList, 0
 }
+
+// UpdateGroupInfo 更新群聊信息
+func (g *groupInfoService) UpdateGroupInfo(req request.UpdateGroupInfoRequest) (string, int) {
+	// 查询群信息
+	group, err := dao.Group.GetGroupInfoByGroupId(req.Uuid)
+	if err != nil {
+		zlog.Error("get group info failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	updated := false
+
+	// 按需更新字段
+	if req.Name != "" {
+		group.Name = req.Name
+		updated = true
+	}
+	if req.AddMode != -1 {
+		group.AddMode = req.AddMode
+		updated = true
+	}
+	if req.Notice != "" {
+		group.Notice = req.Notice
+		updated = true
+	}
+	if req.Avatar != "" {
+		group.Avatar = req.Avatar
+		updated = true
+	}
+
+	// 没有可更新内容
+	if !updated {
+		return "无更新内容", 0
+	}
+
+	// 保存群信息
+	if err := dao.Group.SaveGroup(group); err != nil {
+		zlog.Error("save group failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 同步更新群会话中的群名和头像
+	if err := dao.Session.UpdateGroupSessionsByGroupId(req.Uuid, group.Name, group.Avatar); err != nil {
+		zlog.Error("update group sessions failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 删除相关缓存
+	if err := myredis.DelKey("group:info:" + req.Uuid); err != nil {
+		zlog.Error("delete group info cache failed: " + err.Error())
+	}
+	if err := myredis.DelKey("user:group_created_list:" + group.OwnerId); err != nil {
+		zlog.Error("delete user group created list cache failed: " + err.Error())
+	}
+
+	return "更新成功", 0
+}
+
+func (g *groupInfoService) RemoveGroupMembers(req request.RemoveGroupMembersRequest) (string, int) {
+	group, err := dao.Group.GetGroupInfoByGroupId(req.GroupId)
+	if err != nil {
+		zlog.Error("get group info failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	var memberIds []string
+	if err := json.Unmarshal(group.Members, &memberIds); err != nil {
+		zlog.Error("unmarshal group members failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 不能移除群主
+	for _, uuid := range req.UuidList {
+		if uuid == req.OwnerId {
+			return "不能移除群主", -2
+		}
+	}
+	// 要删除的成员集合
+	removeSet := make(map[string]struct{}, len(req.UuidList))
+	for _, uuid := range req.UuidList {
+		removeSet[uuid] = struct{}{}
+	}
+
+	// 过滤成员列表
+	newMembers := make([]string, 0, len(memberIds))
+	removedUsers := make([]string, 0, len(req.UuidList))
+
+	for _, memberId := range memberIds {
+		if _, ok := removeSet[memberId]; ok {
+			removedUsers = append(removedUsers, memberId)
+			continue
+		}
+		newMembers = append(newMembers, memberId)
+	}
+
+	// 没有实际移除任何人
+	if len(removedUsers) == 0 {
+		return "没有可移除的成员", -2
+	}
+
+	data, err := json.Marshal(newMembers)
+	if err != nil {
+		zlog.Error("marshal group members failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	group.Members = data
+	group.MemberCnt -= len(removedUsers)
+
+	if err := dao.Group.SaveGroup(group); err != nil {
+		zlog.Error("save group failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	now := time.Now()
+	// 清理被移除成员的关系数据
+	for _, uuid := range removedUsers {
+		if err := dao.Session.SoftDeleteGroupSession(uuid, req.GroupId, now); err != nil {
+			zlog.Error("soft delete group session failed: " + err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+		if err := dao.Contact.QuitGroupByUserIdAndGroupId(uuid, req.GroupId, now); err != nil {
+			zlog.Error("quit group contact failed: " + err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+		if err := dao.ContactApply.SoftDeleteGroupApplyByUserIdAndGroupId(uuid, req.GroupId, now); err != nil {
+			zlog.Error("soft delete group apply failed: " + err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+	}
+
+	// 删除群相关缓存
+	if err := myredis.DelKey("group:info:" + req.GroupId); err != nil {
+		zlog.Error("delete group info cache failed: " + err.Error())
+	}
+	if err := myredis.DelKey("group:member_list:" + req.GroupId); err != nil {
+		zlog.Error("delete group member list cache failed: " + err.Error())
+	}
+
+	// 删除被移除用户相关缓存
+	//for _, uuid := range removedUsers {
+	//	if err := myredis.DelKey("user:group_joined_list:" + uuid); err != nil {
+	//		zlog.Error("delete user group joined list cache failed: " + err.Error())
+	//	}
+	//	if err := myredis.DelKey("user:group_session_list:" + uuid); err != nil {
+	//		zlog.Error("delete user group session list cache failed: " + err.Error())
+	//	}
+	//}
+
+	return "移除群聊成员成功", 0
+}

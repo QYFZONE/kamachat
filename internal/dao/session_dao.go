@@ -39,3 +39,16 @@ func (d *sessionDao) SoftDeleteGroupSessionsByGroupId(groupId string, deletedTim
 		Where("receive_id = ?", groupId).
 		Update("deleted_at", deletedAt).Error
 }
+
+// UpdateGroupSessionsByGroupId 更新群聊对应的所有会话中的群名和头像
+// groupId: 群聊id
+// groupName: 新群名
+// avatar: 新群头像
+func (d *sessionDao) UpdateGroupSessionsByGroupId(groupId, groupName, avatar string) error {
+	return GormDB.Model(&model.Session{}).
+		Where("receive_id = ?", groupId).
+		Updates(map[string]interface{}{
+			"receive_name": groupName,
+			"avatar":       avatar,
+		}).Error
+}

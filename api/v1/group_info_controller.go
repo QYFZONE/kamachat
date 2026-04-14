@@ -132,15 +132,35 @@ func GetGroupMemberList(c *gin.Context) {
 
 // UpdateGroupInfo 更新群聊消息
 func UpdateGroupInfo(c *gin.Context) {
-
+	var req request.UpdateGroupInfoRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
+	message, ret := gorm.GroupInfoService.UpdateGroupInfo(req)
+	JsonBack(c, message, ret, nil)
 }
 
 // RemoveGroupMembers 批量移除群成员（踢人）
 func RemoveGroupMembers(c *gin.Context) {
-
+	var req request.RemoveGroupMembersRequest
+	if err := c.BindJSON(&req); err != nil {
+		zlog.Error(err.Error())
+		c.JSON(http.StatusOK, gin.H{
+			"code":    500,
+			"message": constants.SYSTEM_ERROR,
+		})
+		return
+	}
+	message, ret := gorm.GroupInfoService.RemoveGroupMembers(req)
+	JsonBack(c, message, ret, nil)
 }
 
-// SetGroupsStatus 设置群聊是否启用
+// SetGroupsStatus 设置群聊是否启用 - 管理员
 func SetGroupsStatus(c *gin.Context) {
 
 }
