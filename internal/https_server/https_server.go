@@ -3,7 +3,6 @@ package https_server
 import (
 	v1 "kama_chat_server/api/v1"
 	"kama_chat_server/internal/config"
-	"kama_chat_server/pkg/ssl"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -36,8 +35,8 @@ func setupGlobalMiddleware() {
 	GE.Use(cors.New(corsConfig))
 
 	// HTTPS 强制跳转（HTTP → HTTPS）
-	cfg := config.GetConfig().MainConfig
-	GE.Use(ssl.TlsHandler(cfg.Host, cfg.Port))
+	//cfg := config.GetConfig().MainConfig
+	//GE.Use(ssl.TlsHandler(cfg.Host, cfg.Port))
 
 	// TODO: 如需统一认证，在这里添加 JWT 中间件
 	// GE.Use(middleware.JWTAuth())
@@ -59,6 +58,8 @@ func setupPublicRoutes() {
 		auth.POST("/sms/login", v1.SmsLogin)    // 短信登录
 		auth.POST("/email/login", v1.EmaiLogin) //邮箱登录
 	}
+	// 短信验证码（公开）
+	GE.POST("/sms/send", v1.SendSmsCode) //获取验证码
 }
 
 // setupUserRoutes 用户模块 /user/*

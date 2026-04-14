@@ -157,15 +157,15 @@ func (u *userInfoService) Register(registerReq request.RegisterRequest) (string,
 		zlog.Error(err.Error())
 		return constants.SYSTEM_ERROR, nil, -1
 	}
+
 	if code != registerReq.SmsCode {
 		message := "验证码不正确，请重试"
 		zlog.Error(message)
 		return message, nil, -2
-	} else {
-		if err := myredis.DelKey(key); err != nil {
-			zlog.Error(err.Error())
-			return constants.SYSTEM_ERROR, nil, -1
-		}
+	} else if err := myredis.DelKey(key); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+
 	}
 	// 不用校验手机号，前端校验
 	// 判断电话是否已经被注册过了

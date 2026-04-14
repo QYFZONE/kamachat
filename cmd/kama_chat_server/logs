@@ -1,0 +1,90 @@
+{"level":"fatal","ts":"2026-04-14T16:39:51.734+0800","msg":"redirecting to HTTPS","func":"https_server.setupGlobalMiddleware.TlsHandler.func1","file":"D:/study_kamachat/pkg/ssl/tls_handler.go","line":26}
+{"level":"info","ts":"2026-04-14T16:43:10.404+0800","msg":"U1515541551","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-14T16:51:41.172+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T16:51:41.178+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T16:51:41.178+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T16:51:58.671+0800","msg":"U1515541551","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"error","ts":"2026-04-14T16:51:58.674+0800","msg":"数据库查询失败: record not found","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":237}
+{"level":"info","ts":"2026-04-14T17:29:05.170+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:29:05.181+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:29:05.181+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:30:50.826+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:30:50.830+0800","msg":"本地测试模式，验证码为: 100939","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T17:32:24.975+0800","msg":"invalid character '\"' after object key:value pair","func":"v1.Register","file":"D:/study_kamachat/api/v1/user_info_controller.go","line":19}
+{"level":"info","ts":"2026-04-14T17:32:40.135+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:32:40.139+0800","msg":"该电话不存在，可以注册","func":"gorm.(*userInfoService).checkTelephoneExist","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":145}
+{"level":"error","ts":"2026-04-14T17:32:40.186+0800","msg":"Error 1406 (22001): Data too long for column 'password' at row 1","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":192}
+{"level":"info","ts":"2026-04-14T17:35:45.406+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:35:45.407+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:35:45.407+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:36:31.121+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:36:31.122+0800","msg":"本地测试模式，验证码为: 297603","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T17:36:39.403+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":162}
+{"level":"error","ts":"2026-04-14T17:36:59.481+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":162}
+{"level":"info","ts":"2026-04-14T17:38:34.295+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:38:34.296+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:38:34.296+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:38:44.853+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:38:44.854+0800","msg":"本地测试模式，验证码为: 831451","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T17:38:54.492+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:39:33.899+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:39:33.901+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:39:33.901+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:39:43.496+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:39:43.496+0800","msg":"本地测试模式，验证码为: 462201","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T17:39:52.971+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":164}
+{"level":"info","ts":"2026-04-14T17:40:29.022+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:40:29.024+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:40:29.024+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:40:37.242+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:40:37.243+0800","msg":"本地测试模式，验证码为: 580939","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"info","ts":"2026-04-14T17:40:47.150+0800","msg":"580939","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:40:47.150+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:41:40.108+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:41:40.108+0800","msg":"","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"info","ts":"2026-04-14T17:41:40.110+0800","msg":"该电话不存在，可以注册","func":"gorm.(*userInfoService).checkTelephoneExist","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":145}
+{"level":"error","ts":"2026-04-14T17:41:40.153+0800","msg":"Error 1406 (22001): Data too long for column 'password' at row 1","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":192}
+{"level":"info","ts":"2026-04-14T17:44:14.013+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:44:14.015+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:44:14.015+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:45:27.744+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T17:45:27.748+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T17:45:27.748+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T17:46:08.980+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:46:08.981+0800","msg":"本地测试模式，验证码为: 371586","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"info","ts":"2026-04-14T17:46:44.237+0800","msg":"371586","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:46:44.237+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:46:53.015+0800","msg":"371586","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:46:53.015+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:47:05.143+0800","msg":"371586","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:47:05.143+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:47:30.024+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:47:30.024+0800","msg":"","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:47:30.024+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:49:46.524+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:49:46.524+0800","msg":"","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"error","ts":"2026-04-14T17:49:46.524+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":163}
+{"level":"info","ts":"2026-04-14T17:49:55.908+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T17:49:55.909+0800","msg":"本地测试模式，验证码为: 196535","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"info","ts":"2026-04-14T17:50:02.879+0800","msg":"196535","func":"gorm.(*userInfoService).Register","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":160}
+{"level":"info","ts":"2026-04-14T17:50:02.880+0800","msg":"该电话不存在，可以注册","func":"gorm.(*userInfoService).checkTelephoneExist","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":145}
+{"level":"info","ts":"2026-04-14T19:06:22.100+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T19:06:22.106+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T19:06:22.107+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-14T21:54:15.309+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T21:54:15.310+0800","msg":"本地测试模式，验证码为: 446758","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T21:55:42.279+0800","msg":"invalid character '\"' after object key:value pair","func":"v1.Login","file":"D:/study_kamachat/api/v1/user_info_controller.go","line":35}
+{"level":"error","ts":"2026-04-14T21:55:58.697+0800","msg":"invalid character '\"' after object key:value pair","func":"v1.Login","file":"D:/study_kamachat/api/v1/user_info_controller.go","line":35}
+{"level":"info","ts":"2026-04-14T21:56:15.615+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T21:56:15.615+0800","msg":"本地测试模式，验证码为: 727181","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"error","ts":"2026-04-14T21:56:42.140+0800","msg":"invalid character '\"' after object key:value pair","func":"v1.SmsLogin","file":"D:/study_kamachat/api/v1/user_info_controller.go","line":49}
+{"level":"info","ts":"2026-04-14T21:57:37.274+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-14T21:57:37.274+0800","msg":"验证码不正确，请重试","func":"gorm.(*userInfoService).SmsLogin","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":111}
+{"level":"info","ts":"2026-04-14T21:57:43.497+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-14T21:57:43.498+0800","msg":"本地测试模式，验证码为: 154339","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"info","ts":"2026-04-14T21:59:38.365+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"error","ts":"2026-04-14T22:03:57.929+0800","msg":"invalid character '\"' after object key:value pair","func":"v1.UpdateUserInfo","file":"D:/study_kamachat/api/v1/user_info_controller.go","line":99}
+{"level":"info","ts":"2026-04-14T22:04:21.940+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-14T22:09:39.458+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-14T22:09:39.461+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-14T22:09:39.461+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}

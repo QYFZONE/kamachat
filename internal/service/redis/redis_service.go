@@ -90,3 +90,8 @@ func DelKeysWithPrefix(prefix string) error {
 
 	return nil
 }
+
+// DeleteAllRedisKeys 删除当前 Redis 数据库中的所有 key
+func DeleteAllRedisKeys() error {
+	return redisClient.FlushDB(ctx).Err()
+}
