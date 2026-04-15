@@ -38,3 +38,18 @@ func (d *userInfoDao) SaveUser(user *model.UserInfo) error {
 func (d *userInfoDao) CreateNewUser(newUser *model.UserInfo) error {
 	return GormDB.Create(newUser).Error
 }
+
+// GetUserInfoListByUuids 批量获取用户信息
+func (d *userInfoDao) GetUserInfoListByUuids(uuids []string) ([]model.UserInfo, error) {
+	var userList []model.UserInfo
+
+	if len(uuids) == 0 {
+		return userList, nil
+	}
+
+	err := GormDB.
+		Where("uuid IN ?", uuids).
+		Find(&userList).Error
+
+	return userList, err
+}

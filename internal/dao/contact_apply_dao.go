@@ -39,3 +39,15 @@ func (d *contactApplyDao) SoftDeleteGroupAppliesByGroupId(groupId string, delete
 		Where("contact_id = ?", groupId).
 		Update("deleted_at", deletedAt).Error
 }
+
+// SoftDeleteUserApply 软删除用户之间的申请记录
+func (d *contactApplyDao) SoftDeleteUserApply(userId, contactId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.ContactApply{}).
+		Where("contact_id = ? AND user_id = ?", contactId, userId).
+		Update("deleted_at", deletedAt).Error
+}

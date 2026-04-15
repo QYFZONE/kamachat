@@ -52,3 +52,15 @@ func (d *sessionDao) UpdateGroupSessionsByGroupId(groupId, groupName, avatar str
 			"avatar":       avatar,
 		}).Error
 }
+
+// SoftDeleteUserSession 软删除用户之间的会话
+func (d *sessionDao) SoftDeleteUserSession(sendId, receiveId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.Session{}).
+		Where("send_id = ? AND receive_id = ?", sendId, receiveId).
+		Update("deleted_at", deletedAt).Error
+}

@@ -20,9 +20,10 @@ func init() {
 	setupStaticFiles()
 
 	// 3. 路由分组注册
-	setupPublicRoutes() // 公开接口（登录注册）
-	setupUserRoutes()   // 用户模块
-	setupGroupRoutes()  // 群组模块
+	setupPublicRoutes()  // 公开接口（登录注册）
+	setupUserRoutes()    // 用户模块
+	setupGroupRoutes()   // 群组模块
+	setupContactRoutes() // 联系人模块
 }
 
 // setupGlobalMiddleware 全局中间件
@@ -94,5 +95,24 @@ func setupGroupRoutes() {
 		group.POST("/updateGroupInfo", v1.UpdateGroupInfo)       // 更新群组资料（名称、公告、头像等）
 		group.POST("/getGroupMemberList", v1.GetGroupMemberList) // 获取群成员列表
 		group.POST("/removeGroupMembers", v1.RemoveGroupMembers) // 批量移除群成员（踢人）
+	}
+}
+
+// setupContactRoutes 联系人模块 /contact/*
+func setupContactRoutes() {
+	contact := GE.Group("/contact")
+	{
+		contact.POST("/getUserList", v1.GetUserList)               // 获取用户联系人列表（好友、群聊等）
+		contact.POST("/loadMyJoinedGroup", v1.LoadMyJoinedGroup)   // 获取我加入的群聊列表
+		contact.POST("/getContactInfo", v1.GetContactInfo)         // 获取联系人详情（用户或群聊）
+		contact.POST("/deleteContact", v1.DeleteContact)           // 删除联系人（好友关系）
+		contact.POST("/applyContact", v1.ApplyContact)             // 申请添加联系人（加好友 / 申请加群）
+		contact.POST("/getNewContactList", v1.GetNewContactList)   // 获取新的联系人申请列表
+		contact.POST("/passContactApply", v1.PassContactApply)     // 通过联系人申请
+		contact.POST("/refuseContactApply", v1.RefuseContactApply) // 拒绝联系人申请
+		contact.POST("/blackContact", v1.BlackContact)             // 拉黑联系人
+		contact.POST("/cancelBlackContact", v1.CancelBlackContact) // 取消拉黑联系人
+		contact.POST("/getAddGroupList", v1.GetAddGroupList)       // 获取可加入 / 可申请加入的群聊列表
+		contact.POST("/blackApply", v1.BlackApply)                 // 拉黑申请人或屏蔽该申请
 	}
 }

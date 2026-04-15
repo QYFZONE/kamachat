@@ -3,6 +3,7 @@ package dao
 import (
 	"kama_chat_server/internal/model"
 	"kama_chat_server/pkg/enum/contact/contact_status_enum"
+	"kama_chat_server/pkg/enum/contact/contact_type_enum"
 	"time"
 
 	"gorm.io/gorm"
@@ -47,4 +48,62 @@ func (d *contactInfoDao) SoftDeleteGroupContactsByGroupId(groupId string, delete
 	return GormDB.Model(&model.UserContact{}).
 		Where("contact_id = ?", groupId).
 		Update("deleted_at", deletedAt).Error
+}
+
+// GetUserContactListByOwnerId 获取指定用户的好友联系人关系列表
+// 仅返回联系人类型为用户、且未被删除的关系
+func (d *contactInfoDao) GetUserContactListByOwnerId(ownerId string) ([]model.UserContact, error) {
+	var contactList []model.UserContact
+
+	err := GormDB.
+		Order("created_at DESC").
+		Where("user_id = ? AND contact_type = ? AND status != ?", ownerId, contact_type_enum.USER, 4).
+		Find(&contactList).Error
+
+	return contactList, err
+}
+
+// GetJoinedGroupContactListByOwnerId 获取指定用户加入的群聊关系列表
+// 过滤掉已退群、已被踢出等无效关系
+func (d *contactInfoDao) GetJoinedGroupContactListByOwnerId(ownerId string) ([]model.UserContact, error) {
+	var contactList []model.UserContact
+
+	err := GormDB.
+		Order("created_at DESC").
+		Where("user_id = ? AND contact_type = ? AND status != ? AND status != ?", ownerId, contact_type_enum.GROUP, 6, 7).
+		Find(&contactList).Error
+
+	return contactList, err
+}
+
+// DeleteUserContact 软删除用户联系人关系，并更新状态
+func (d *contactInfoDao) DeleteUserContact(userId, contactId string, deletedTime time.Time, status int8) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.UserContact{}).
+		Where("user_id = ? AND contact_id = ?", userId, contactId).
+		Updates(map[string]interface{}{
+			"deleted_at": deletedAt,
+			"status":     status,
+		}).Error
+}
+
+// GetContactApplyByUserIdAndContactId 获取申请记录
+func (d *contactApplyDao) GetContactApplyByUserIdAndContactId(userId, contactId string) (*model.ContactApply, error) {
+	var contactApply model.ContactApply
+	err := GormDB.Where("user_id = ? AND contact_id = ?", userId, contactId).First(&contactApply).Error
+	return &contactApply, err
+}
+
+// CreateContactApply 创建申请记录
+func (d *contactApplyDao) CreateContactApply(contactApply *model.ContactApply) error {
+	return GormDB.Create(contactApply).Error
+}
+
+// SaveContactApply 保存申请记录
+func (d *contactApplyDao) SaveContactApply(contactApply *model.ContactApply) error {
+	return GormDB.Save(contactApply).Error
 }

@@ -174,6 +174,7 @@ func (g *groupInfoService) CheckGroupAddMode(groupId string) (string, int8, int)
 // EnterGroupDirectly 直接进群
 // contactId 是群聊Id
 func (g *groupInfoService) EnterGroupDirectly(userId, contactId string) (string, int) {
+
 	group, err := dao.Group.GetGroupInfoByGroupId(contactId)
 	if err != nil {
 		zlog.Error(err.Error())
@@ -185,7 +186,6 @@ func (g *groupInfoService) EnterGroupDirectly(userId, contactId string) (string,
 		zlog.Error(err.Error())
 		return constants.SYSTEM_ERROR, -1
 	}
-
 	// 已在群中，直接返回
 	for _, member := range members {
 		if member == userId {
@@ -310,9 +310,9 @@ func (g *groupInfoService) LeaveGroup(userId, groupId string) (string, int) {
 	if err := myredis.DelKey("group:member_list:" + groupId); err != nil {
 		zlog.Error(err.Error())
 	}
-	//if err := myredis.DelKey("user:group_joined_list:" + userId); err != nil {
-	//	zlog.Error(err.Error())
-	//}
+	if err := myredis.DelKey("user:group_joined_list:" + userId); err != nil {
+		zlog.Error(err.Error())
+	}
 	//if err := myredis.DelKey("group:session_list:" + userId); err != nil {
 	//	zlog.Error(err.Error())
 	//}
@@ -327,7 +327,7 @@ func (g *groupInfoService) DismissGroup(ownerId, groupId string) (string, int) {
 		zlog.Error(err.Error())
 		return constants.SYSTEM_ERROR, -1
 	}
-	if group.OwnerId == ownerId {
+	if group.OwnerId != ownerId {
 		return "无权限解散群聊", -2
 	}
 

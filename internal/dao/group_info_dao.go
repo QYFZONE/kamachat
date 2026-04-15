@@ -19,14 +19,14 @@ func (d *groupInfoDao) CreateNewGroup(newGroup *model.GroupInfo) error {
 // 使用用户ownerId 获取我创建的群聊
 func (d *groupInfoDao) GetGroupInfoByOwnerId(ownerId string) ([]model.GroupInfo, error) {
 	var groupInfos []model.GroupInfo
-	err := GormDB.Where("ownerId = ?", ownerId).Find(&groupInfos).Error
+	err := GormDB.Where("owner_id = ?", ownerId).Find(&groupInfos).Error
 	return groupInfos, err
 }
 
 // 使用groupId 获取群聊
 func (d *groupInfoDao) GetGroupInfoByGroupId(groupId string) (*model.GroupInfo, error) {
 	var groupInfo model.GroupInfo
-	err := GormDB.Where("gruopId = ?", groupId).First(&groupInfo).Error
+	err := GormDB.Where("uuid = ?", groupId).First(&groupInfo).Error
 	return &groupInfo, err
 }
 
@@ -50,4 +50,19 @@ func (d *groupInfoDao) SoftDeleteGroupByGroupId(groupId string, deletedTime time
 			"deleted_at": deletedAt,
 			"updated_at": deletedTime,
 		}).Error
+}
+
+// GetGroupInfoListByGroupIds 批量获取群信息
+func (d *groupInfoDao) GetGroupInfoListByGroupIds(groupIds []string) ([]model.GroupInfo, error) {
+	var groupList []model.GroupInfo
+
+	if len(groupIds) == 0 {
+		return groupList, nil
+	}
+
+	err := GormDB.
+		Where("uuid IN ?", groupIds).
+		Find(&groupList).Error
+
+	return groupList, err
 }
