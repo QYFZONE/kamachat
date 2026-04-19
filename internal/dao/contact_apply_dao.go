@@ -2,6 +2,7 @@ package dao
 
 import (
 	"kama_chat_server/internal/model"
+	"kama_chat_server/pkg/enum/contact_apply/contact_apply_status_enum"
 	"time"
 
 	"gorm.io/gorm"
@@ -50,4 +51,15 @@ func (d *contactApplyDao) SoftDeleteUserApply(userId, contactId string, deletedT
 	return GormDB.Model(&model.ContactApply{}).
 		Where("contact_id = ? AND user_id = ?", contactId, userId).
 		Update("deleted_at", deletedAt).Error
+}
+
+// GetPendingContactApplyListByContactId 获取指定联系人的待处理申请列表
+func (d *contactApplyDao) GetPendingContactApplyListByContactId(contactId string) ([]model.ContactApply, error) {
+	var contactApplyList []model.ContactApply
+
+	err := GormDB.
+		Where("contact_id = ? AND status = ?", contactId, contact_apply_status_enum.PENDING).
+		Find(&contactApplyList).Error
+
+	return contactApplyList, err
 }

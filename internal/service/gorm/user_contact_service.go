@@ -457,3 +457,243 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 	}
 	return "用户/群聊不存在", -2
 }
+
+// GetNewContactList 获取新的联系人申请列表
+func (u *userContactService) GetNewContactList(ownerId string) (string, []respond.NewContactListRespond, int) {
+	// 查询待处理申请记录
+	contactApplyList, err := dao.ContactApply.GetPendingContactApplyListByContactId(ownerId)
+	if err != nil {
+		zlog.Error("get pending contact apply list failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	if len(contactApplyList) == 0 {
+		zlog.Info("没有在申请的联系人")
+		return "没有在申请的联系人", nil, 0
+	}
+
+	// 提取申请人 userId
+	userIds := make([]string, 0, len(contactApplyList))
+	for _, contactApply := range contactApplyList {
+		if contactApply.UserId != "" {
+			userIds = append(userIds, contactApply.UserId)
+		}
+	}
+
+	// 批量查询申请人信息
+	userList, err := dao.User.GetUserInfoListByUuids(userIds)
+	if err != nil {
+		zlog.Error("get user info list failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	// 建立 userId -> userInfo 映射
+	userMap := make(map[string]model.UserInfo, len(userList))
+	for _, user := range userList {
+		userMap[user.Uuid] = user
+	}
+
+	// 组装返回
+	rsp := make([]respond.NewContactListRespond, 0, len(contactApplyList))
+	for _, contactApply := range contactApplyList {
+		user, ok := userMap[contactApply.UserId]
+		if !ok {
+			continue
+		}
+
+		message := "申请理由：无"
+		if contactApply.Message != "" {
+			message = "申请理由：" + contactApply.Message
+		}
+
+		rsp = append(rsp, respond.NewContactListRespond{
+			ContactId:     user.Uuid,
+			ContactName:   user.Nickname,
+			ContactAvatar: user.Avatar,
+			Message:       message,
+		})
+	}
+
+	return "获取成功", rsp, 0
+}
+
+// PassContactApply 通过联系人申请
+// ownerId: 如果是用户申请，就是当前登录用户id；如果是群申请，就是群聊id
+// contactId: 申请人id
+func (u *userContactService) PassContactApply(ownerId string, contactId string) (string, int) {
+	if ownerId == "" || contactId == "" {
+		return "参数错误", -2
+	}
+
+	contactApply, err := dao.ContactApply.GetContactApplyByUserIdAndContactId(contactId, ownerId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "申请记录不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 通过好友申请
+	if ownerId[0] == 'U' {
+		user, err := dao.User.GetUserInfoByUuid(contactId)
+
+		if err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				return "用户不存在", -2
+			}
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
+		if user.Status == user_status_enum.DISABLE {
+			return "用户已被禁用", -2
+		}
+		contactApply.Status = contact_apply_status_enum.AGREE
+		if err := dao.ContactApply.SaveContactApply(contactApply); err != nil {
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
+		now := time.Now()
+		// 创建双方联系人关系
+		newContact := &model.UserContact{
+			UserId:      ownerId,
+			ContactId:   contactId,
+			ContactType: contact_type_enum.USER,
+			Status:      contact_status_enum.NORMAL,
+			CreatedAt:   now,
+			UpdateAt:    now,
+		}
+		if err := dao.Contact.CreateNewContact(newContact); err != nil {
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
+		anotherContact := &model.UserContact{
+			UserId:      contactId,
+			ContactId:   ownerId,
+			ContactType: contact_type_enum.USER,
+			Status:      contact_status_enum.NORMAL,
+			CreatedAt:   now,
+			UpdateAt:    now,
+		}
+		if err := dao.Contact.CreateNewContact(anotherContact); err != nil {
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
+		// 删除双方联系人列表缓存
+		if err := myredis.DelKey("user:contact_list:" + ownerId); err != nil {
+			zlog.Error(err.Error())
+		}
+		if err := myredis.DelKey("user:contact_list:" + contactId); err != nil {
+			zlog.Error(err.Error())
+		}
+
+		return "已添加该联系人", 0
+	}
+	// 通过加群申请
+	group, err := dao.Group.GetGroupInfoByGroupId(ownerId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "群聊不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	if group.Status == group_status_enum.DISABLE {
+		return "群聊已被禁用", -2
+	}
+
+	var members []string
+	if err := json.Unmarshal(group.Members, &members); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 防止重复加群
+	for _, member := range members {
+		if member == contactId {
+			return "用户已在群中", -2
+		}
+	}
+
+	contactApply.Status = contact_apply_status_enum.AGREE
+	if err := dao.ContactApply.SaveContactApply(contactApply); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	now := time.Now()
+
+	newContact := &model.UserContact{
+		UserId:      contactId,
+		ContactId:   ownerId,
+		ContactType: contact_type_enum.GROUP,
+		Status:      contact_status_enum.NORMAL,
+		CreatedAt:   now,
+		UpdateAt:    now,
+	}
+	if err := dao.Contact.CreateNewContact(newContact); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	members = append(members, contactId)
+	group.MemberCnt = len(members)
+
+	data, err := json.Marshal(members)
+	if err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	group.Members = data
+
+	if err := dao.Group.SaveGroup(group); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 删除相关缓存
+	if err := myredis.DelKey("user:group_joined_list:" + contactId); err != nil {
+		zlog.Error(err.Error())
+	}
+	if err := myredis.DelKey("group:info:" + ownerId); err != nil {
+		zlog.Error(err.Error())
+	}
+	if err := myredis.DelKey("group:member_list:" + ownerId); err != nil {
+		zlog.Error(err.Error())
+	}
+
+	return "已通过加群申请", 0
+}
+
+// RefuseContactApply 拒绝联系人申请
+// ownerId: 如果是用户的话就是登录用户id，如果是群聊的话就是群聊id
+// contactId: 申请人id
+func (u *userContactService) RefuseContactApply(ownerId string, contactId string) (string, int) {
+	if ownerId == "" || contactId == "" {
+		return "参数错误", -2
+	}
+
+	contactApply, err := dao.ContactApply.GetContactApplyByUserIdAndContactId(contactId, ownerId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "申请记录不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	contactApply.Status = contact_apply_status_enum.REFUSE
+	if err := dao.ContactApply.SaveContactApply(contactApply); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	if ownerId[0] == 'U' {
+		return "已拒绝该联系人申请", 0
+	}
+	return "已拒绝该加群申请", 0
+}
