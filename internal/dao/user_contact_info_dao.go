@@ -91,19 +91,24 @@ func (d *contactInfoDao) DeleteUserContact(userId, contactId string, deletedTime
 		}).Error
 }
 
-// GetContactApplyByUserIdAndContactId 获取申请记录
-func (d *contactApplyDao) GetContactApplyByUserIdAndContactId(userId, contactId string) (*model.ContactApply, error) {
-	var contactApply model.ContactApply
-	err := GormDB.Where("user_id = ? AND contact_id = ?", userId, contactId).First(&contactApply).Error
-	return &contactApply, err
+// UpdateContactStatus 更新联系人关系状态
+func (d *contactInfoDao) UpdateContactStatus(userId, contactId string, updateTime time.Time, status int8) error {
+	return GormDB.Model(&model.UserContact{}).
+		Where("user_id = ? AND contact_id = ?", userId, contactId).
+		Updates(map[string]interface{}{
+			"status":    status,
+			"update_at": updateTime,
+		}).Error
 }
 
-// CreateContactApply 创建申请记录
-func (d *contactApplyDao) CreateContactApply(contactApply *model.ContactApply) error {
-	return GormDB.Create(contactApply).Error
+// GetUserContactByUserIdAndContactId 获取指定用户与联系人的关系记录
+func (d *contactInfoDao) GetUserContactByUserIdAndContactId(userId, contactId string) (*model.UserContact, error) {
+	var contact model.UserContact
+	err := GormDB.Where("user_id = ? AND contact_id = ?", userId, contactId).First(&contact).Error
+	return &contact, err
 }
 
-// SaveContactApply 保存申请记录
-func (d *contactApplyDao) SaveContactApply(contactApply *model.ContactApply) error {
-	return GormDB.Save(contactApply).Error
+// SaveUserContact 保存联系人关系记录
+func (d *contactInfoDao) SaveUserContact(contact *model.UserContact) error {
+	return GormDB.Save(contact).Error
 }

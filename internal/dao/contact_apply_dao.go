@@ -2,6 +2,7 @@ package dao
 
 import (
 	"kama_chat_server/internal/model"
+	"kama_chat_server/pkg/enum/contact/contact_type_enum"
 	"kama_chat_server/pkg/enum/contact_apply/contact_apply_status_enum"
 	"time"
 
@@ -59,6 +60,35 @@ func (d *contactApplyDao) GetPendingContactApplyListByContactId(contactId string
 
 	err := GormDB.
 		Where("contact_id = ? AND status = ?", contactId, contact_apply_status_enum.PENDING).
+		Find(&contactApplyList).Error
+
+	return contactApplyList, err
+}
+
+// GetContactApplyByUserIdAndContactId 获取申请记录
+func (d *contactApplyDao) GetContactApplyByUserIdAndContactId(userId, contactId string) (*model.ContactApply, error) {
+	var contactApply model.ContactApply
+	err := GormDB.Where("user_id = ? AND contact_id = ?", userId, contactId).First(&contactApply).Error
+	return &contactApply, err
+}
+
+// CreateContactApply 创建申请记录
+func (d *contactApplyDao) CreateContactApply(contactApply *model.ContactApply) error {
+	return GormDB.Create(contactApply).Error
+}
+
+// SaveContactApply 保存申请记录
+func (d *contactApplyDao) SaveContactApply(contactApply *model.ContactApply) error {
+	return GormDB.Save(contactApply).Error
+}
+
+// GetPendingGroupApplyListByGroupId 获取指定群聊的待处理申请列表
+func (d *contactApplyDao) GetPendingGroupApplyListByGroupId(groupId string) ([]model.ContactApply, error) {
+	var contactApplyList []model.ContactApply
+
+	err := GormDB.
+		Where("contact_id = ? AND contact_type = ? AND status = ?", groupId, contact_type_enum.GROUP, contact_apply_status_enum.PENDING).
+		Order("last_apply_at DESC").
 		Find(&contactApplyList).Error
 
 	return contactApplyList, err

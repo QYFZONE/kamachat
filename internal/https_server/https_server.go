@@ -112,7 +112,7 @@ func setupContactRoutes() {
 		contact.POST("/refuseContactApply", v1.RefuseContactApply) // 拒绝联系人申请
 		contact.POST("/blackContact", v1.BlackContact)             // 拉黑联系人
 		contact.POST("/cancelBlackContact", v1.CancelBlackContact) // 取消拉黑联系人
-		contact.POST("/getAddGroupList", v1.GetAddGroupList)       // 获取可加入 / 可申请加入的群聊列表
+		contact.POST("/getAddGroupList", v1.GetAddGroupList)       // 获取新的群聊申请列表
 		contact.POST("/blackApply", v1.BlackApply)                 // 拉黑申请人或屏蔽该申请
 	}
 }

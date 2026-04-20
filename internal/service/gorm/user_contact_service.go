@@ -697,3 +697,182 @@ func (u *userContactService) RefuseContactApply(ownerId string, contactId string
 	}
 	return "已拒绝该加群申请", 0
 }
+
+func (u *userContactService) BlackContact(ownerId string, contactId string) (string, int) {
+	if ownerId == "" || contactId == "" {
+		return "参数错误", -2
+	}
+	now := time.Now()
+	// 自己这边标记为拉黑
+	if err := dao.Contact.UpdateContactStatus(ownerId, contactId, now, contact_status_enum.BLACK); err != nil {
+		zlog.Error("update owner contact status failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 对方这边标记为被拉黑
+	if err := dao.Contact.UpdateContactStatus(contactId, ownerId, now, contact_status_enum.BE_BLACK); err != nil {
+		zlog.Error("update contact status failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	// 删除双方会话
+	if err := dao.Session.SoftDeleteUserSession(ownerId, contactId, now); err != nil {
+		zlog.Error("delete owner session failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	if err := dao.Session.SoftDeleteUserSession(contactId, ownerId, now); err != nil {
+		zlog.Error("delete contact session failed: " + err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 删除双方联系人列表缓存
+	if err := myredis.DelKey("user:contact_list:" + ownerId); err != nil {
+		zlog.Error(err.Error())
+	}
+	if err := myredis.DelKey("user:contact_list:" + contactId); err != nil {
+		zlog.Error(err.Error())
+	}
+
+	return "已拉黑该联系人", 0
+}
+
+// CancelBlackContact 取消拉黑联系人
+func (u *userContactService) CancelBlackContact(ownerId string, contactId string) (string, int) {
+	if ownerId == "" || contactId == "" {
+		return "参数错误", -2
+	}
+	// 查询自己这边的联系人关系
+	blackContact, err := dao.Contact.GetUserContactByUserIdAndContactId(ownerId, contactId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "联系人关系不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	if blackContact.Status != contact_status_enum.BLACK {
+		return "未拉黑该联系人，无需解除拉黑", -2
+	}
+
+	// 查询对方这边的联系人关系
+	beBlackContact, err := dao.Contact.GetUserContactByUserIdAndContactId(contactId, ownerId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "联系人关系不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 对方状态应为 BE_BLACK
+	if beBlackContact.Status != contact_status_enum.BE_BLACK {
+		return "该联系人未被拉黑，无需解除拉黑", -2
+	}
+
+	// 双方状态恢复正常
+	blackContact.Status = contact_status_enum.NORMAL
+	beBlackContact.Status = contact_status_enum.NORMAL
+
+	if err := dao.Contact.SaveUserContact(blackContact); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+	if err := dao.Contact.SaveUserContact(beBlackContact); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 删除双方联系人列表缓存
+	if err := myredis.DelKey("user:contact_list:" + ownerId); err != nil {
+		zlog.Error(err.Error())
+	}
+	if err := myredis.DelKey("user:contact_list:" + contactId); err != nil {
+		zlog.Error(err.Error())
+	}
+
+	return "已解除拉黑该联系人", 0
+}
+
+// GetAddGroupList 获取新的加群列表
+// 前端已经判断调用接口的用户是群主，也只有群主才能调用这个接口
+func (u *userContactService) GetAddGroupList(groupId string) (string, []respond.AddGroupListRespond, int) {
+	// 查询待处理的加群申请
+	contactApplyList, err := dao.ContactApply.GetPendingGroupApplyListByGroupId(groupId)
+	if err != nil {
+		zlog.Error("get pending group apply list failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+
+	if len(contactApplyList) == 0 {
+		zlog.Info("没有在申请的联系人")
+		return "没有在申请的联系人", nil, 0
+	}
+
+	// 提取申请人id
+	userIds := make([]string, 0, len(contactApplyList))
+	for _, contactApply := range contactApplyList {
+		if contactApply.UserId != "" {
+			userIds = append(userIds, contactApply.UserId)
+		}
+	}
+
+	// 批量查询申请人信息
+	userList, err := dao.User.GetUserInfoListByUuids(userIds)
+	if err != nil {
+		zlog.Error("get user info list failed: " + err.Error())
+		return constants.SYSTEM_ERROR, nil, -1
+	}
+	// 建立映射，方便组装返回结果
+	userMap := make(map[string]model.UserInfo, len(userList))
+	for _, user := range userList {
+		userMap[user.Uuid] = user
+	}
+
+	rsp := make([]respond.AddGroupListRespond, 0, len(contactApplyList))
+	for _, contactApply := range contactApplyList {
+		user, ok := userMap[contactApply.UserId]
+		if !ok {
+			continue
+		}
+
+		message := "申请理由：无"
+		if contactApply.Message != "" {
+			message = "申请理由：" + contactApply.Message
+		}
+
+		rsp = append(rsp, respond.AddGroupListRespond{
+			ContactId:     user.Uuid,
+			ContactName:   user.Nickname,
+			ContactAvatar: user.Avatar,
+			Message:       message,
+		})
+	}
+
+	return "获取成功", rsp, 0
+}
+
+// BlackApply 拉黑申请
+func (u *userContactService) BlackApply(ownerId string, contactId string) (string, int) {
+	// 参数校验
+	if ownerId == "" || contactId == "" {
+		return "参数错误", -2
+	}
+
+	// 查询申请记录
+	contactApply, err := dao.ContactApply.GetContactApplyByUserIdAndContactId(contactId, ownerId)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return "申请记录不存在", -2
+		}
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	// 更新申请状态为拉黑
+	contactApply.Status = contact_apply_status_enum.BLACK
+	if err := dao.ContactApply.SaveContactApply(contactApply); err != nil {
+		zlog.Error(err.Error())
+		return constants.SYSTEM_ERROR, -1
+	}
+
+	return "已拉黑该申请", 0
+}
