@@ -25,6 +25,7 @@ func init() {
 	setupGroupRoutes()   // 群组模块
 	setupContactRoutes() // 联系人模块
 	setupSessionRoutes() // 会话模块
+	setupMessageRoutes() // 消息模块
 }
 
 // setupGlobalMiddleware 全局中间件
@@ -128,5 +129,17 @@ func setupSessionRoutes() {
 		session.POST("/getGroupSessionList", v1.GetGroupSessionList)         // 获取群聊会话列表
 		session.POST("/deleteSession", v1.DeleteSession)                     // 删除会话
 		session.POST("/checkOpenSessionAllowed", v1.CheckOpenSessionAllowed) // 检查是否允许打开会话（如是否被拉黑、是否已删除关系等）
+	}
+}
+
+// setupMessageRoutes 消息模块 /message/*
+func setupMessageRoutes() {
+	message := GE.Group("/message")
+	{
+		message.POST("/getMessageList", v1.GetMessageList)           //获取聊天记录
+		message.POST("/getGroupMessageList", v1.GetGroupMessageList) //  获取群聊消息记录
+		message.POST("/uploadAvatar", v1.UploadAvatar)               // 上传头像
+		message.POST("/uploadFile", v1.UploadFile)                   // 上传文件
+		message.POST("/getCurContactListInChatRoom", v1.GetCurContactListInChatRoom)
 	}
 }
