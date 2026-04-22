@@ -334,13 +334,16 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 	if req.OwnerId == "" || req.ContactId == "" {
 		return "参数错误", -2
 	}
+
 	// 申请用户
 	if req.ContactId[0] == 'U' {
+		// 不能添加自己
 		if req.OwnerId == req.ContactId {
 			return "不能添加自己", -2
 		}
 
-		user, err := dao.User.GetUserInfoByUuid(req.OwnerId)
+		// 查询目标用户是否存在
+		user, err := dao.User.GetUserInfoByUuid(req.ContactId)
 		if err != nil {
 			if errors.Is(err, gorm.ErrRecordNotFound) {
 				zlog.Error("用户不存在")
@@ -350,10 +353,21 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 			return constants.SYSTEM_ERROR, -1
 		}
 
+		// 目标用户不能处于禁用状态
 		if user.Status == user_status_enum.DISABLE {
 			zlog.Info("用户已被禁用")
 			return "用户已被禁用", -2
 		}
+
+		// 已存在正常联系人关系，不能重复申请
+		_, err = dao.Contact.GetUserContactByUserIdAndContactId(req.OwnerId, req.ContactId)
+		if err == nil {
+			return "已是联系人，无需重复申请", -2
+		} else if !errors.Is(err, gorm.ErrRecordNotFound) {
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
 		// 查询历史申请记录
 		contactApply, err := dao.ContactApply.GetContactApplyByUserIdAndContactId(req.OwnerId, req.ContactId)
 		if err != nil {
@@ -382,6 +396,7 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 		if contactApply.Status == contact_apply_status_enum.BLACK {
 			return "对方已将你拉黑", -2
 		}
+
 		// 更新原申请记录为最新申请
 		contactApply.LastApplyAt = time.Now()
 		contactApply.Status = contact_apply_status_enum.PENDING
@@ -406,15 +421,29 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 			zlog.Error(err.Error())
 			return constants.SYSTEM_ERROR, -1
 		}
+
 		// 群聊不能处于禁用状态
 		if group.Status == group_status_enum.DISABLE {
 			zlog.Info("群聊已被禁用")
 			return "群聊已被禁用", -2
 		}
+
 		// 不能申请加入自己创建的群聊
 		if group.OwnerId == req.OwnerId {
 			return "不能申请加入自己创建的群聊", -2
 		}
+
+		// 已在群中，无需重复申请
+		contact, err := dao.Contact.GetUserContactByUserIdAndContactId(req.OwnerId, req.ContactId)
+		if err == nil {
+			if contact.Status == contact_status_enum.NORMAL {
+				return "已在群中，无需重复申请", -2
+			}
+		} else if !errors.Is(err, gorm.ErrRecordNotFound) {
+			zlog.Error(err.Error())
+			return constants.SYSTEM_ERROR, -1
+		}
+
 		// 查询历史申请记录
 		contactApply, err := dao.ContactApply.GetContactApplyByUserIdAndContactId(req.OwnerId, req.ContactId)
 		if err != nil {
@@ -455,6 +484,7 @@ func (u *userContactService) ApplyContact(req request.ApplyContactRequest) (stri
 		}
 		return "申请成功", 0
 	}
+
 	return "用户/群聊不存在", -2
 }
 

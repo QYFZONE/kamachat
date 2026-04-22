@@ -64,3 +64,42 @@ func (d *sessionDao) SoftDeleteUserSession(sendId, receiveId string, deletedTime
 		Where("send_id = ? AND receive_id = ?", sendId, receiveId).
 		Update("deleted_at", deletedAt).Error
 }
+
+// GetSessionBySendIdAndReceiveId 根据发送方和接收方获取会话
+func (d *sessionDao) GetSessionBySendIdAndReceiveId(sendId, receiveId string) (*model.Session, error) {
+	var session model.Session
+	err := GormDB.Where("send_id = ? AND receive_id = ?", sendId, receiveId).First(&session).Error
+	return &session, err
+}
+
+// CreateSession 创建会话
+func (d *sessionDao) CreateSession(session *model.Session) error {
+	return GormDB.Create(session).Error
+}
+
+func (d *sessionDao) GetSessionListBySendId(sendId string) ([]model.Session, error) {
+	var sessions []model.Session
+	err := GormDB.
+		Where("send_id = ?", sendId).
+		Order("created_at DESC").
+		Find(&sessions).Error
+	return sessions, err
+}
+
+func (d *sessionDao) GetSessionByUuid(uuid string) (*model.Session, error) {
+	var session model.Session
+	err := GormDB.Where("uuid = ?", uuid).First(&session).Error
+	return &session, err
+}
+
+// SoftDeleteSessionByUuid 根据会话id软删除会话
+func (d *sessionDao) SoftDeleteSessionByUuid(sessionId string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.Session{}).
+		Where("uuid = ?", sessionId).
+		Update("deleted_at", deletedAt).Error
+}

@@ -24,6 +24,7 @@ func init() {
 	setupUserRoutes()    // 用户模块
 	setupGroupRoutes()   // 群组模块
 	setupContactRoutes() // 联系人模块
+	setupSessionRoutes() // 会话模块
 }
 
 // setupGlobalMiddleware 全局中间件
@@ -102,17 +103,30 @@ func setupGroupRoutes() {
 func setupContactRoutes() {
 	contact := GE.Group("/contact")
 	{
-		contact.POST("/getUserList", v1.GetUserList)               // 获取用户联系人列表（好友、群聊等）
-		contact.POST("/loadMyJoinedGroup", v1.LoadMyJoinedGroup)   // 获取我加入的群聊列表
-		contact.POST("/getContactInfo", v1.GetContactInfo)         // 获取联系人详情（用户或群聊）
-		contact.POST("/deleteContact", v1.DeleteContact)           // 删除联系人（好友关系）
-		contact.POST("/applyContact", v1.ApplyContact)             // 申请添加联系人（加好友 / 申请加群）
-		contact.POST("/getNewContactList", v1.GetNewContactList)   // 获取新的联系人申请列表
-		contact.POST("/passContactApply", v1.PassContactApply)     // 通过联系人申请
-		contact.POST("/refuseContactApply", v1.RefuseContactApply) // 拒绝联系人申请
-		contact.POST("/blackContact", v1.BlackContact)             // 拉黑联系人
-		contact.POST("/cancelBlackContact", v1.CancelBlackContact) // 取消拉黑联系人
-		contact.POST("/getAddGroupList", v1.GetAddGroupList)       // 获取新的群聊申请列表
-		contact.POST("/blackApply", v1.BlackApply)                 // 拉黑申请人或屏蔽该申请
+		contact.POST("/getUserList", v1.GetUserList)                         // 获取用户联系人列表（好友、群聊等）
+		contact.POST("/loadMyJoinedGroup", v1.LoadMyJoinedGroup)             // 获取我加入的群聊列表
+		contact.POST("/getContactInfo", v1.GetContactInfo)                   // 获取联系人详情（用户或群聊）
+		contact.POST("/deleteContact", v1.DeleteContact)                     // 删除联系人（好友关系）
+		contact.POST("/applyContact", v1.ApplyContact)                       // 申请添加联系人（加好友 / 申请加群）
+		contact.POST("/getNewContactList", v1.GetNewContactList)             // 获取新的联系人申请列表
+		contact.POST("/passContactApply", v1.PassContactApply)               // 通过联系人申请
+		contact.POST("/refuseContactApply", v1.RefuseContactApply)           // 拒绝联系人申请
+		contact.POST("/blackContact", v1.BlackContact)                       // 拉黑联系人
+		contact.POST("/cancelBlackContact", v1.CancelBlackContact)           // 取消拉黑联系人
+		contact.POST("/getAddGroupList", v1.GetAddGroupList)                 // 获取新的群聊申请列表
+		contact.POST("/blackApply", v1.BlackApply)                           // 拉黑申请人或屏蔽该申请
+		contact.POST("/checkOpenSessionAllowed", v1.CheckOpenSessionAllowed) // 检查是否允许打开会话（如是否被拉黑、是否已删除关系等）
+	}
+}
+
+// setupSessionRoutes 会话模块 /session/*
+func setupSessionRoutes() {
+	session := GE.Group("/session")
+	{
+		session.POST("/openSession", v1.OpenSession)                         // 打开会话（进入单聊或群聊会话）
+		session.POST("/getUserSessionList", v1.GetUserSessionList)           // 获取用户单聊会话列表
+		session.POST("/getGroupSessionList", v1.GetGroupSessionList)         // 获取群聊会话列表
+		session.POST("/deleteSession", v1.DeleteSession)                     // 删除会话
+		session.POST("/checkOpenSessionAllowed", v1.CheckOpenSessionAllowed) // 检查是否允许打开会话（如是否被拉黑、是否已删除关系等）
 	}
 }
