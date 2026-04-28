@@ -31,7 +31,7 @@ var UserContactService = new(userContactService)
 // 关于用户被禁用的问题，这里查到的是所有联系人，如果被禁用或被拉黑会以弹窗的形式提醒，无法打开会话框；如果被删除，是搜索不到该联系人的。
 
 func (u *userContactService) GetUserList(ownerId string) (string, []respond.MyUserListRespond, int) {
-	cacheKey := "user:contact_list" + ownerId
+	cacheKey := "user:contact_list:" + ownerId
 	// 先查缓存
 	cacheValue, err := myredis.GetKeyNilIsErr(cacheKey)
 	if err == nil {
@@ -60,8 +60,10 @@ func (u *userContactService) GetUserList(ownerId string) (string, []respond.MyUs
 
 	// 提取联系人用户id
 	contactIds := make([]string, 0, len(contactList))
+	contactStatusMap := make(map[string]int8, len(contactList))
 	for _, contact := range contactList {
 		contactIds = append(contactIds, contact.ContactId)
+		contactStatusMap[contact.ContactId] = contact.Status
 	}
 	// 批量查用户信息
 	userList, err := dao.User.GetUserInfoListByUuids(contactIds)
@@ -77,6 +79,7 @@ func (u *userContactService) GetUserList(ownerId string) (string, []respond.MyUs
 			UserId:   user.Uuid,
 			UserName: user.Nickname,
 			Avatar:   user.Avatar,
+			Status:   contactStatusMap[user.Uuid],
 		})
 	}
 

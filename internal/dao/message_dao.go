@@ -6,6 +6,16 @@ type messageDao struct{}
 
 var Message = new(messageDao)
 
+func (d *messageDao) CreateMessage(message *model.Message) error {
+	return GormDB.Create(message).Error
+}
+
+func (d *messageDao) UpdateMessageStatus(messageUUID string, status int8) error {
+	return GormDB.Model(&model.Message{}).
+		Where("uuid = ?", messageUUID).
+		Update("status", status).Error
+}
+
 // GetMessageListByUserIds 根据双方用户id获取聊天记录
 func (d *messageDao) GetMessageListByUserIds(userOneId, userTwoId string) ([]model.Message, error) {
 	var messageList []model.Message

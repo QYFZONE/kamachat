@@ -16,3 +16,565 @@
 {"level":"info","ts":"2026-04-22T16:21:00.654+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
 {"level":"info","ts":"2026-04-22T16:21:00.657+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
 {"level":"info","ts":"2026-04-22T16:21:00.657+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-27T14:23:19.674+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-27T14:23:19.675+0800","msg":"本地测试模式，验证码为: 805185","func":"sms.VerificationCode","file":"D:/study_kamachat/internal/service/sms/auth_code_service.go","line":40}
+{"level":"info","ts":"2026-04-27T14:23:42.336+0800","msg":"该电话不存在，可以注册","func":"gorm.(*userInfoService).checkTelephoneExist","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":145}
+{"level":"info","ts":"2026-04-27T15:05:51.691+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-27T15:05:51.701+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-27T15:05:51.702+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-27T17:27:12.352+0800","msg":"U2026042799972027538","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:27:12.381+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T17:27:12.382+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T17:27:12.382+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T17:27:12.383+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:27:12.386+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:27:59.210+0800","msg":"U2026042799972027538","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:28:08.276+0800","msg":"U2026042799972027538","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:28:08.299+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T17:28:08.301+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:28:08.302+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:28:22.204+0800","msg":"U2026042799972027538","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:28:22.223+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T17:28:22.225+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:28:22.226+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:30:16.707+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:30:16.731+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T17:30:16.731+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T17:30:16.732+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:30:16.734+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:30:38.431+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:30:38.450+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:30:38.451+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:31:55.786+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:31:55.807+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:31:55.807+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:33:26.010+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:33:26.030+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:33:26.030+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:33:29.290+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:33:29.309+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:33:29.311+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T17:33:35.086+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T17:33:35.104+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T17:33:35.105+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T18:48:29.576+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:48:49.807+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:49:30.782+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:50:19.799+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:50:49.508+0800","msg":"会话没有找到，将新建会话","func":"gorm.(*sessionService).OpenSession","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":143}
+{"level":"info","ts":"2026-04-27T18:51:02.117+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:51:09.854+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T18:51:09.872+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T18:51:09.872+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T18:51:19.972+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T18:51:22.277+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T18:51:26.701+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:51:31.335+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T18:51:53.435+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:52:31.216+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:54:42.087+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:17.785+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:21.040+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:25.045+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:28.634+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:31.987+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:56:56.195+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:00.973+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:10.439+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:14.922+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:31.685+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:34.491+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:36.350+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:57:55.726+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:58:54.626+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:59:29.531+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:59:32.379+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:59:34.562+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T18:59:59.945+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:00:05.529+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:00:10.959+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:00:19.013+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:02:00.217+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:02:01.330+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:02:17.290+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:09:41.186+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:09:41.186+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:13:53.921+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:13:53.921+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:16:43.392+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:16:46.316+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:10.144+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:11.043+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:11.834+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:14.738+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:15.558+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:16.593+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:18.955+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:17:55.841+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:19:58.719+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:20:20.641+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:20:21.383+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:20:22.165+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:20:22.906+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:20:23.530+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:20:24.369+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:21:58.117+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:22:05.244+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:22:05.265+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T19:22:05.266+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T19:22:26.101+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:24:09.094+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:24:12.389+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:24:12.389+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:25:01.283+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:25:16.452+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:25:16.474+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T19:25:16.475+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T19:27:13.406+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:27:47.409+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:27:49.865+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:27:57.778+0800","msg":"会话没有找到，将新建会话","func":"gorm.(*sessionService).OpenSession","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":143}
+{"level":"info","ts":"2026-04-27T19:28:15.561+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:28:32.008+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:28:46.472+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:28:46.472+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:29:13.494+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:29:13.494+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:29:17.283+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:29:32.518+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:32:14.161+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:33:12.652+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:35:41.194+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:36:26.321+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:36:38.929+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:37:18.162+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:38:22.653+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:38:27.311+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:38:27.312+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:39:03.285+0800","msg":"U2026041586166470756","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:39:03.303+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T19:39:03.304+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T19:39:25.811+0800","msg":"U2026041586166470756","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:39:25.828+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T19:39:25.832+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T19:39:26.643+0800","msg":"U2026041586166470756","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-27T19:39:26.663+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T19:39:26.663+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T19:39:51.301+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:40:09.161+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:40:14.566+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:40:19.736+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:40:36.316+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:40:41.363+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:23.099+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:28.457+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:31.198+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:34.380+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:36.798+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:38.845+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:41.518+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:41:42.761+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:01.122+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:05.240+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:07.361+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:08.622+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:10.185+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:11.137+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:12.165+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:13.486+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:15.419+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:17.867+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:19.581+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:20.953+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:22.200+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:23.474+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:24.250+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:32.555+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:42:43.771+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:43:57.674+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:44:03.023+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:45:16.765+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:45:23.895+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:46:23.965+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:46:23.965+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T19:47:35.493+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:47:58.944+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:48:14.531+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:48:14.532+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T19:48:31.949+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:48:53.910+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:48:53.910+0800","msg":"目前不存在联系人","func":"gorm.(*userContactService).GetUserList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":57}
+{"level":"info","ts":"2026-04-27T19:49:15.545+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:49:32.018+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:49:43.462+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"error","ts":"2026-04-27T19:50:03.047+0800","msg":"密码错误: 13419029939","func":"gorm.(*userInfoService).Login","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":69}
+{"level":"info","ts":"2026-04-27T19:50:10.174+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:50:20.174+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:50:34.451+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:50:35.907+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:50:37.603+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:50:58.831+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:51:01.345+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:54:35.423+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:54:39.026+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:55:39.930+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:55:45.460+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T19:55:45.460+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T19:55:47.409+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T19:55:59.295+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":501}
+{"level":"info","ts":"2026-04-27T20:08:03.964+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-27T20:08:03.972+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-27T20:08:03.972+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}
+{"level":"info","ts":"2026-04-27T22:36:37.483+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:36:37.778+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:36:37.778+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:36:37.778+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:37:24.454+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:37:24.752+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:37:24.752+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:37:24.752+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-27T22:38:23.352+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:38:23.677+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-27T22:38:25.853+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:38:26.159+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:38:26.159+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:38:26.159+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:38:34.618+0800","msg":"文件名：2023052021 B.png，文件大小：120228","func":"gorm.(*messageService).UploadFile","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":223}
+{"level":"error","ts":"2026-04-27T22:38:34.619+0800","msg":"open static\\files\\file_2026042745787527343.png: The system cannot find the path specified.","func":"gorm.(*messageService).UploadFile","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":232}
+{"level":"error","ts":"2026-04-27T22:40:39.728+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:40:53.434+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:40:53.434+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:40:53.435+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:40:53.436+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"error","ts":"2026-04-27T22:42:02.738+0800","msg":"read tcp 127.0.0.1:8080->127.0.0.1:9709: wsarecv: An existing connection was forcibly closed by the remote host.","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-27T22:42:02.739+0800","msg":"read tcp 127.0.0.1:8080->127.0.0.1:51365: wsarecv: An existing connection was forcibly closed by the remote host.","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:42:04.757+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:42:04.781+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:42:05.061+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:42:05.061+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:42:05.061+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:42:05.093+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:42:05.093+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:42:05.093+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-27T22:42:21.629+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:42:21.957+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-27T22:42:24.035+0800","msg":"会话没有找到，将新建会话","func":"gorm.(*sessionService).OpenSession","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":143}
+{"level":"info","ts":"2026-04-27T22:42:24.364+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:42:24.364+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:42:24.364+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:42:24.371+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:42:24.371+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-27T22:42:54.131+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:43:05.994+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:43:06.309+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:43:06.309+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:43:06.309+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:43:06.311+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"error","ts":"2026-04-27T22:43:10.247+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:43:23.549+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-27T22:43:23.860+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:43:23.860+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:43:23.860+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:43:23.862+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"error","ts":"2026-04-27T22:43:25.117+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:43:25.449+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-27T22:43:27.588+0800","msg":"会话没有找到，将新建会话","func":"gorm.(*sessionService).OpenSession","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":143}
+{"level":"info","ts":"2026-04-27T22:43:27.927+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:43:27.927+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:43:27.927+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:43:27.929+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-27T22:43:33.761+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:43:33.761+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-27T22:44:39.544+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:44:46.116+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:44:46.116+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:44:46.116+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:44:46.132+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:44:46.132+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-27T22:45:48.344+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:45:49.455+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:45:49.455+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-27T22:46:38.210+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:46:38.210+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:46:38.210+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:46:38.473+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:46:38.473+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-27T22:46:39.335+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-27T22:49:35.120+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:49:35.120+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-27T22:50:58.881+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-27T22:50:58.881+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-27T22:50:58.881+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-27T22:50:59.142+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-27T22:50:59.142+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T10:11:38.781+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:11:39.023+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T10:11:39.023+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T10:11:39.239+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:11:39.239+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:11:39.239+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:13:18.991+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:13:19.300+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:13:19.300+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T10:13:19.300+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:13:19.301+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T10:13:19.301+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T10:17:34.297+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T10:17:34.297+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T10:17:34.599+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:17:34.599+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:17:34.599+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:17:40.646+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:17:42.135+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T10:17:42.135+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-28T10:17:57.228+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:17:57.228+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:17:57.228+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:18:00.423+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:18:01.684+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:18:01.684+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:18:01.684+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:18:04.332+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:18:06.004+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:18:06.004+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:18:06.004+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:18:10.802+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:18:12.261+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:18:12.261+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:18:12.261+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:18:14.263+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:18:22.496+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T10:18:43.676+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:18:43.676+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T10:18:43.676+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:18:43.939+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T10:18:43.939+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T10:18:45.733+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:18:55.833+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T10:18:55.833+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T10:18:55.833+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T10:18:57.761+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T10:19:13.196+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T14:49:31.460+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:49:31.460+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T14:49:31.748+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:49:31.748+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:49:31.748+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"error","ts":"2026-04-28T14:49:34.583+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:49:37.059+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T14:49:39.802+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:49:39.802+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:49:39.802+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:49:45.247+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:49:47.777+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:49:47.777+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-28T14:49:51.838+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T14:49:55.196+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T14:50:04.095+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:50:04.095+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:50:04.095+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:50:06.358+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T14:50:35.611+0800","msg":"read tcp 127.0.0.1:8080->127.0.0.1:12278: wsarecv: An existing connection was forcibly closed by the remote host.","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T14:50:35.611+0800","msg":"read tcp 127.0.0.1:8080->127.0.0.1:29741: wsarecv: An existing connection was forcibly closed by the remote host.","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:50:37.726+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:50:37.726+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T14:50:38.010+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:50:38.010+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:50:38.010+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:50:41.096+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:50:41.096+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:50:41.096+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"error","ts":"2026-04-28T14:52:49.044+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:52:49.300+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:52:49.300+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T14:52:49.438+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:52:49.438+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:52:49.438+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:52:51.025+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:52:52.015+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-28T14:53:08.053+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:53:08.053+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:53:08.053+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:55:49.758+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T14:55:49.763+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:55:50.054+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:55:50.054+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:55:50.054+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:55:50.055+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:55:50.055+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T14:55:50.079+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:55:50.079+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:55:50.079+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:57:26.204+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T14:57:26.204+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T14:57:26.516+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:57:26.516+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:57:26.516+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:57:26.841+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:57:26.876+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T14:57:26.876+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T14:57:27.185+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:57:27.185+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:57:27.185+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:57:27.502+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T14:58:15.312+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:58:15.636+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T14:58:15.636+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T14:58:15.696+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:58:15.696+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:58:15.696+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:58:16.723+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:58:17.102+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:58:17.102+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:58:17.102+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T14:59:40.217+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T14:59:40.217+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T14:59:40.516+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:59:40.516+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:59:40.516+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:59:40.841+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T14:59:40.876+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T14:59:40.876+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T14:59:41.180+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T14:59:41.180+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T14:59:41.180+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T14:59:41.472+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T15:01:07.594+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:01:07.837+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:01:07.837+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:01:07.991+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:01:07.991+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:01:07.991+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:01:09.783+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:01:10.148+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:01:10.148+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:01:10.148+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:02:44.062+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:02:44.062+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T15:02:45.071+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:02:45.938+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:02:52.468+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:02:52.468+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-28T15:02:54.714+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:02:56.019+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:02:56.019+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:02:56.019+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"error","ts":"2026-04-28T15:02:57.590+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:02:58.220+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-28T15:03:08.182+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:03:14.284+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:03:20.731+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:03:34.376+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:03:34.376+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:03:34.376+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:07:53.208+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:07:53.208+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:07:53.511+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:07:53.511+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:07:53.511+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:07:53.863+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:07:53.898+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:07:53.898+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:07:54.209+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:07:54.209+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:07:54.209+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"error","ts":"2026-04-28T15:07:54.500+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:07:59.982+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:07:59.982+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:09:15.212+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:09:15.212+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:09:15.407+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:09:15.407+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:09:15.523+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:09:15.523+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:09:15.523+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:09:16.034+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:09:16.070+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:09:16.070+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:09:16.372+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:09:16.372+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:09:16.372+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:09:16.685+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:14:29.811+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:14:29.970+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:14:29.979+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:14:29.979+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:14:30.110+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:14:30.110+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:14:30.110+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"error","ts":"2026-04-28T15:14:30.201+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:14:30.236+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:14:30.238+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:14:35.904+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:14:35.904+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:15:53.023+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:15:53.219+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:15:53.228+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:15:53.228+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:15:53.326+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:15:53.326+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:15:53.326+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:15:53.434+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:15:53.469+0800","msg":"未创建群聊会话","func":"gorm.(*sessionService).GetGroupSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":247}
+{"level":"info","ts":"2026-04-28T15:15:53.469+0800","msg":"未创建用户会话","func":"gorm.(*sessionService).GetUserSessionList","file":"D:/study_kamachat/internal/service/gorm/session_service.go","line":194}
+{"level":"info","ts":"2026-04-28T15:19:28.060+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:19:28.060+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:19:28.060+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"error","ts":"2026-04-28T15:19:28.383+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T15:20:45.552+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"error","ts":"2026-04-28T15:20:45.555+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:20:45.867+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:20:45.867+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:20:45.867+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:20:45.869+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"info","ts":"2026-04-28T15:20:45.869+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:20:45.869+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T15:20:45.869+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"info","ts":"2026-04-28T15:20:45.889+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:20:45.889+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:20:45.889+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:21:35.845+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:21:35.845+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:21:35.845+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:21:35.883+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:21:47.830+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:21:47.830+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T15:22:23.511+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:22:23.905+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:22:23.905+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:22:23.905+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:22:25.686+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:22:26.055+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:22:26.055+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:22:26.055+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:22:26.579+0800","msg":"websocket: close 1001 (going away)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:22:26.936+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:22:26.936+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:22:26.936+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:22:37.200+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:22:38.514+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:22:38.514+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:22:38.514+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:22:39.587+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:22:40.570+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:22:58.558+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:22:58.558+0800","msg":"缓存数据解析失败: unexpected end of JSON input","func":"gorm.(*groupInfoService).LoadMyGroup","file":"D:/study_kamachat/internal/service/gorm/group_info_service.go","line":98}
+{"level":"info","ts":"2026-04-28T15:23:03.061+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:23:03.061+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:23:03.061+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"error","ts":"2026-04-28T15:23:04.802+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:23:12.697+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:23:14.111+0800","msg":"ws connection established","func":"chat.NewClientInit","file":"D:/study_kamachat/internal/service/chat/client.go","line":219}
+{"level":"info","ts":"2026-04-28T15:23:14.111+0800","msg":"ws read goroutine start","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":64}
+{"level":"info","ts":"2026-04-28T15:23:14.111+0800","msg":"ws write goroutine start","func":"chat.(*Client).Write","file":"D:/study_kamachat/internal/service/chat/client.go","line":107}
+{"level":"info","ts":"2026-04-28T15:23:14.360+0800","msg":"redis key not found","func":"redis.GetKey","file":"D:/study_kamachat/internal/service/redis/redis_service.go","line":38}
+{"level":"error","ts":"2026-04-28T15:23:14.360+0800","msg":"unexpected end of JSON input","func":"gorm.(*messageService).GetMessageList","file":"D:/study_kamachat/internal/service/gorm/message_service.go","line":48}
+{"level":"error","ts":"2026-04-28T15:23:15.012+0800","msg":"websocket: close 1005 (no status)","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T15:23:15.942+0800","msg":"没有在申请的联系人","func":"gorm.(*userContactService).GetNewContactList","file":"D:/study_kamachat/internal/service/gorm/user_contact_service.go","line":504}
+{"level":"info","ts":"2026-04-28T15:23:22.374+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-28T15:24:20.466+0800","msg":"U2026041454490090507","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"info","ts":"2026-04-28T15:24:23.069+0800","msg":"U2026041555524108800","func":"gorm.(*userInfoService).GetUserInfo","file":"D:/study_kamachat/internal/service/gorm/user_info_service.go","line":215}
+{"level":"error","ts":"2026-04-28T16:27:09.818+0800","msg":"read tcp 127.0.0.1:8080->127.0.0.1:25002: wsarecv: An existing connection was forcibly closed by the remote host.","func":"chat.(*Client).Read","file":"D:/study_kamachat/internal/service/chat/client.go","line":70}
+{"level":"info","ts":"2026-04-28T16:27:15.463+0800","msg":"关闭服务器...","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":50}
+{"level":"info","ts":"2026-04-28T16:27:15.475+0800","msg":"所有Redis键已删除","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":55}
+{"level":"info","ts":"2026-04-28T16:27:15.475+0800","msg":"服务器已关闭","func":"main.main","file":"D:/study_kamachat/cmd/kama_chat_server/main.go","line":58}

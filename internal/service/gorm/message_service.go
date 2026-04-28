@@ -60,7 +60,7 @@ func (m *messageService) GetMessageList(userOneId, userTwoId string) (string, []
 		return constants.SYSTEM_ERROR, nil, -1
 	}
 
-	rspList := make([]respond.GetMessageListRespond, len(messageList))
+	rspList := make([]respond.GetMessageListRespond, 0, len(messageList))
 
 	for _, message := range messageList {
 		rspList = append(rspList, respond.GetMessageListRespond{
@@ -121,7 +121,7 @@ func (m *messageService) GetGroupMessageList(groupId string) (string, []respond.
 		return constants.SYSTEM_ERROR, nil, -1
 	}
 
-	rspList := make([]respond.GetGroupMessageListRespond, len(messageList))
+	rspList := make([]respond.GetGroupMessageListRespond, 0, len(messageList))
 	for _, message := range messageList {
 		rspList = append(rspList, respond.GetGroupMessageListRespond{
 			SendId:     message.SendId,
@@ -201,22 +201,22 @@ func (m *messageService) UploadAvatar(c *gin.Context) (string, int) {
 }
 
 // UploadFile 上传文件
-func (m *messageService) UploadFile(c *gin.Context) (string, int) {
+func (m *messageService) UploadFile(c *gin.Context) (string, string, int) {
 	if err := c.Request.ParseMultipartForm(constants.FILE_MAX_SIZE); err != nil {
 		zlog.Error(err.Error())
-		return constants.SYSTEM_ERROR, -1
+		return constants.SYSTEM_ERROR, "", -1
 	}
 
 	mForm := c.Request.MultipartForm
 	if mForm == nil || len(mForm.File) == 0 {
-		return "未找到上传文件", -2
+		return "未找到上传文件", "", -2
 	}
 
 	for key := range mForm.File {
 		file, fileHeader, err := c.Request.FormFile(key)
 		if err != nil {
 			zlog.Error(err.Error())
-			return constants.SYSTEM_ERROR, -1
+			return constants.SYSTEM_ERROR, "", -1
 		}
 		defer file.Close()
 
@@ -230,18 +230,18 @@ func (m *messageService) UploadFile(c *gin.Context) (string, int) {
 		out, err := os.Create(localFileName)
 		if err != nil {
 			zlog.Error(err.Error())
-			return constants.SYSTEM_ERROR, -1
+			return constants.SYSTEM_ERROR, "", -1
 		}
 		defer out.Close()
 
 		if _, err := io.Copy(out, file); err != nil {
 			zlog.Error(err.Error())
-			return constants.SYSTEM_ERROR, -1
+			return constants.SYSTEM_ERROR, "", -1
 		}
 
 		zlog.Info("完成文件上传")
-		return "上传成功", 0
+		return "上传成功", "/static/files/" + fileName, 0
 	}
 
-	return "未找到上传文件", -2
+	return "未找到上传文件", "", -2
 }

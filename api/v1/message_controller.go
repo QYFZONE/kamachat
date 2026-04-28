@@ -45,6 +45,6 @@ func UploadAvatar(c *gin.Context) {
 
 // UploadFile 上传文件
 func UploadFile(c *gin.Context) {
-	message, ret := gorm.MessageService.UploadFile(c)
-	JsonBack(c, message, ret, nil)
+	message, url, ret := gorm.MessageService.UploadFile(c)
+	JsonBack(c, message, ret, url)
 }

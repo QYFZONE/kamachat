@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"kama_chat_server/internal/config"
 	"kama_chat_server/internal/https_server"
-	//"kama_chat_server/internal/service/chat"
+	"kama_chat_server/internal/service/chat"
 	//"kama_chat_server/internal/service/kafka"
 	myredis "kama_chat_server/internal/service/redis"
 	"kama_chat_server/pkg/zlog"
@@ -18,15 +18,15 @@ func main() {
 	host := conf.MainConfig.Host
 	port := conf.MainConfig.Port
 
-	// 本地先不启 chat / kafka
+	// 本地默认走 channel 模式，启动进程内聊天总线，WebSocket 消息才会落库和回推。
 	// kafkaConfig := conf.KafkaConfig
 	// if kafkaConfig.MessageMode == "kafka" {
 	// 	kafka.KafkaService.KafkaInit()
 	// }
-	//
-	// if kafkaConfig.MessageMode == "channel" {
-	// 	go chat.ChatServer.Start()
-	// } else {
+	if conf.KafkaConfig.MessageMode == "channel" {
+		go chat.ChatServer.Start()
+	}
+	// else {
 	// 	go chat.KafkaChatServer.Start()
 	// }
 

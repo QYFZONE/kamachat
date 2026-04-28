@@ -1,0 +1,250 @@
+:root {
+  --kc-bg: #f5f2ee;
+  --kc-surface: #ffffff;
+  --kc-soft: #f8f5f1;
+  --kc-line: #e8e0d6;
+  --kc-ink: #1f1a17;
+  --kc-muted: #6f655d;
+  --kc-accent: #bc5a34;
+  --kc-accent-deep: #9c4727;
+  --kc-success: #1f8f65;
+  --kc-shadow: 0 16px 40px rgba(42, 27, 15, 0.06);
+  --kc-radius-xl: 22px;
+  --kc-radius-lg: 16px;
+  --kc-radius-md: 12px;
+  --kc-font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--kc-font-sans);
+  color: var(--kc-ink);
+  background: linear-gradient(180deg, #f8f5f1 0%, #f4efea 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 36px;
+}
+
+.glass-card {
+  border: 1px solid var(--kc-line);
+  border-radius: var(--kc-radius-xl);
+  background: var(--kc-surface);
+  box-shadow: var(--kc-shadow);
+}
+
+.soft-card {
+  border: 1px solid var(--kc-line);
+  border-radius: var(--kc-radius-lg);
+  background: var(--kc-soft);
+  padding: 16px 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--kc-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.display-title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.16;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+.muted-copy {
+  color: var(--kc-muted);
+  line-height: 1.7;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.panel-copy {
+  margin: 10px 0 0;
+  color: var(--kc-muted);
+  line-height: 1.68;
+}
+
+.panel-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--kc-muted);
+  line-height: 1.82;
+}
+
+.panel-list li + li {
+  margin-top: 8px;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-item {
+  padding: 8px 12px;
+  border: 1px solid var(--kc-line);
+  border-radius: 999px;
+  background: var(--kc-soft);
+  color: var(--kc-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.meta-item {
+  padding: 16px;
+  border: 1px solid var(--kc-line);
+  border-radius: var(--kc-radius-lg);
+  background: var(--kc-soft);
+}
+
+.meta-item__label {
+  margin: 0;
+  color: var(--kc-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meta-item__value {
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.el-button {
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--kc-accent);
+  --el-button-border-color: var(--kc-accent);
+  --el-button-hover-bg-color: var(--kc-accent-deep);
+  --el-button-hover-border-color: var(--kc-accent-deep);
+  --el-button-active-bg-color: var(--kc-accent-deep);
+  --el-button-active-border-color: var(--kc-accent-deep);
+}
+
+.el-tabs__item.is-active {
+  color: var(--kc-accent);
+}
+
+.el-tabs__active-bar {
+  background-color: var(--kc-accent);
+}
+
+.el-input__wrapper,
+.el-textarea__wrapper {
+  border-radius: 12px;
+}
+
+.el-form-item__label {
+  font-weight: 700;
+}
+
+body .home-board,
+body .friends-hero-card,
+body .groups-hero-card,
+body .messages-hero-card,
+body .create-group-hero {
+  padding: 22px;
+}
+
+body .friends-hero-card__title,
+body .groups-hero-card__title,
+body .messages-hero-card__title,
+body .create-group-hero__title {
+  font-size: 30px;
+  letter-spacing: 0;
+}
+
+body .feature-card {
+  min-height: 150px;
+  padding: 18px;
+}
+
+body .friends-stat,
+body .groups-stat,
+body .messages-stat {
+  min-height: 96px;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 20px, 1240px);
+    padding-top: 20px;
+  }
+
+  .display-title {
+    font-size: 28px;
+  }
+
+  body .home-hero__summary,
+  body .feature-grid,
+  body .friends-stats-grid,
+  body .groups-stats-grid,
+  body .messages-stats-grid,
+  body .stats-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 84%);
+    grid-template-columns: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body .home-hero__summary > *,
+  body .feature-grid > *,
+  body .friends-stats-grid > *,
+  body .groups-stats-grid > *,
+  body .messages-stats-grid > *,
+  body .stats-grid > * {
+    scroll-snap-align: start;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}

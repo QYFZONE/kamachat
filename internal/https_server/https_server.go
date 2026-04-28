@@ -26,6 +26,7 @@ func init() {
 	setupContactRoutes() // 联系人模块
 	setupSessionRoutes() // 会话模块
 	setupMessageRoutes() // 消息模块
+	setupWebSocket()     // WebSocket（单独处理）
 }
 
 // setupGlobalMiddleware 全局中间件
@@ -75,8 +76,7 @@ func setupUserRoutes() {
 		user.POST("/ableUsers", v1.AbleUsers)             // 启用用户
 		user.POST("/disableUsers", v1.DisableUsers)       // 禁用用户
 		user.POST("/deleteUsers", v1.DeleteUsers)         // 删除用户
-		user.POST("/setAdmin", v1.SetAdmin)               // 设置管理员
-		//user.POST("/wsLogout", v1.WsLogout)               // WS 登出
+		user.POST("/setAdmin", v1.SetAdmin)               // 设置管理
 	}
 }
 
@@ -140,6 +140,12 @@ func setupMessageRoutes() {
 		message.POST("/getGroupMessageList", v1.GetGroupMessageList) //  获取群聊消息记录
 		message.POST("/uploadAvatar", v1.UploadAvatar)               // 上传头像
 		message.POST("/uploadFile", v1.UploadFile)                   // 上传文件
-		message.POST("/getCurContactListInChatRoom", v1.GetCurContactListInChatRoom)
+		//message.POST("/getCurContactListInChatRoom", v1.GetCurContactListInChatRoom)
 	}
+}
+
+// setupWebSocket WebSocket 连接（单独处理，升级协议）
+func setupWebSocket() {
+	GE.GET("/wss", v1.WsLogin)
+	GE.POST("/wsLogout", v1.WsLogout) // WS 登出
 }
