@@ -1,6 +1,12 @@
 package dao
 
-import "kama_chat_server/internal/model"
+import (
+	"kama_chat_server/internal/model"
+	"kama_chat_server/pkg/enum/user_info/user_status_enum"
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type userInfoDao struct{}
 
@@ -52,4 +58,27 @@ func (d *userInfoDao) GetUserInfoListByUuids(uuids []string) ([]model.UserInfo, 
 		Find(&userList).Error
 
 	return userList, err
+}
+
+func (d *userInfoDao) AbleUsersByUserIdList(list []string) error {
+	return GormDB.Model(&model.UserInfo{}).
+		Where("uuid IN ?", list).
+		Update("status", user_status_enum.NORMAL).Error
+}
+
+func (d *userInfoDao) DisableUsersByUserIdList(list []string) error {
+	return GormDB.Model(&model.UserInfo{}).
+		Where("uuid IN ?", list).
+		Update("status", user_status_enum.DISABLE).Error
+}
+
+func (d *userInfoDao) SoftDeleteUserByUuidList(uuidList []string, deletedTime time.Time) error {
+	deletedAt := gorm.DeletedAt{
+		Time:  deletedTime,
+		Valid: true,
+	}
+
+	return GormDB.Model(&model.UserInfo{}).
+		Where("uuid IN ?", uuidList).
+		Update("deleted_at", deletedAt).Error
 }

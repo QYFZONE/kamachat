@@ -2,6 +2,7 @@ package dao
 
 import (
 	"kama_chat_server/internal/model"
+	"kama_chat_server/pkg/enum/group_info/group_status_enum"
 	"time"
 
 	"gorm.io/gorm"
@@ -65,4 +66,28 @@ func (d *groupInfoDao) GetGroupInfoListByGroupIds(groupIds []string) ([]model.Gr
 		Find(&groupList).Error
 
 	return groupList, err
+}
+
+func (d *groupInfoDao) GetAllGroupInfo() ([]model.GroupInfo, error) {
+	var groupInfoList []model.GroupInfo
+	err := GormDB.Unscoped().Find(&groupInfoList).Error
+	return groupInfoList, err
+}
+
+func (d *groupInfoDao) AbleGroupsByGroupIdList(groupIdList []string, updateTime time.Time) error {
+	return GormDB.Model(&model.GroupInfo{}).
+		Where("uuid IN ?", groupIdList).
+		Updates(map[string]interface{}{
+			"status":     group_status_enum.NORMAL,
+			"updated_at": updateTime,
+		}).Error
+}
+
+func (d *groupInfoDao) DisableGroupsByGroupIdList(groupIdList []string, updateTime time.Time) error {
+	return GormDB.Model(&model.GroupInfo{}).
+		Where("uuid IN ?", groupIdList).
+		Updates(map[string]interface{}{
+			"status":     group_status_enum.DISABLE,
+			"updated_at": updateTime,
+		}).Error
 }

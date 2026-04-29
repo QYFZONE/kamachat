@@ -26,6 +26,7 @@ func init() {
 	setupContactRoutes() // 联系人模块
 	setupSessionRoutes() // 会话模块
 	setupMessageRoutes() // 消息模块
+	setupAdmitRoutes()   // 管理员模块
 	setupWebSocket()     // WebSocket（单独处理）
 }
 
@@ -70,13 +71,8 @@ func setupPublicRoutes() {
 func setupUserRoutes() {
 	user := GE.Group("/user")
 	{
-		user.POST("/getUserInfo", v1.GetUserInfo)         // 获取用户信息
-		user.POST("/getUserInfoList", v1.GetUserInfoList) // 获取用户列表
-		user.POST("/updateUserInfo", v1.UpdateUserInfo)   //更新用户信息
-		user.POST("/ableUsers", v1.AbleUsers)             // 启用用户
-		user.POST("/disableUsers", v1.DisableUsers)       // 禁用用户
-		user.POST("/deleteUsers", v1.DeleteUsers)         // 删除用户
-		user.POST("/setAdmin", v1.SetAdmin)               // 设置管理
+		user.POST("/getUserInfo", v1.GetUserInfo)       // 获取用户信息
+		user.POST("/updateUserInfo", v1.UpdateUserInfo) //更新用户信息
 	}
 }
 
@@ -92,8 +88,6 @@ func setupGroupRoutes() {
 		group.POST("/dismissGroup", v1.DismissGroup)             // 解散群组（通常只有群主可操作）
 		group.POST("/getGroupInfo", v1.GetGroupInfo)             // 获取单个群组的详细信息
 		group.POST("/getGroupInfoList", v1.GetGroupInfoList)     // 批量获取群组信息列表
-		group.POST("/deleteGroups", v1.DeleteGroups)             // 批量删除群组（软删除或硬删除）
-		group.POST("/setGroupsStatus", v1.SetGroupsStatus)       // 批量设置群组状态（如正常、禁言、封禁等）
 		group.POST("/updateGroupInfo", v1.UpdateGroupInfo)       // 更新群组资料（名称、公告、头像等）
 		group.POST("/getGroupMemberList", v1.GetGroupMemberList) // 获取群成员列表
 		group.POST("/removeGroupMembers", v1.RemoveGroupMembers) // 批量移除群成员（踢人）
@@ -141,6 +135,20 @@ func setupMessageRoutes() {
 		message.POST("/uploadAvatar", v1.UploadAvatar)               // 上传头像
 		message.POST("/uploadFile", v1.UploadFile)                   // 上传文件
 		//message.POST("/getCurContactListInChatRoom", v1.GetCurContactListInChatRoom)
+	}
+}
+
+// setupAdmitRoutes() 管理员模块/Admit/*
+func setupAdmitRoutes() {
+	admit := GE.Group("/admit")
+	{
+		admit.POST("/getUserInfoList", v1.GetUserInfoList)        // 获取用户列表
+		admit.POST("/ableUsers", v1.AbleUsers)                    // 启用用户
+		admit.POST("/disableUsers", v1.DisableUsers)              // 禁用用户
+		admit.GET("/group/getGroupInfoList", v1.GetGroupInfoList) // 获取群聊列表
+		admit.POST("/group/disableeGroups", v1.DisAbleGroups)     // 禁用群聊
+		admit.POST("/group/disableGroups", v1.DisAbleGroups)      // 禁用群聊
+		admit.POST("/group/ableGroups", v1.AbleGroups)            //启用群聊
 	}
 }
 
